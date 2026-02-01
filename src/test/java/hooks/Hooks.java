@@ -12,20 +12,24 @@ import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.qameta.allure.Allure;
-import utils.ConfigReader;
+import pom.PageObjectManager;
 import utils.LoggerFactory;
 
 public class Hooks {
-	private ConfigReader configReader;
-	private String browser;
 
-    @Before
-    public void beforeScenario() throws IOException {
-        configReader = new ConfigReader();
-        configReader.loadProperties();
-        browser = DriverManager.getBrowserType();
-        DriverManager.initBrowser(browser);
-    }
+	PageObjectManager pom;
+
+	@Before
+	public void Setup() throws IOException {
+
+		DriverManager.initBrowser();
+		pom = new PageObjectManager(DriverManager.getDriver());
+		pom.getLaunchPage().launchApplication();
+
+	}
+	public PageObjectManager getPom() {
+		return pom;
+	}
 
 	@After
 	public void tearDown(Scenario scenario) {
@@ -38,10 +42,13 @@ public class Hooks {
 	@AfterStep
 	public void takeScreenShot(Scenario scenario) {
 		if (scenario.isFailed()) {
-			TakesScreenshot takesScreenshot = (TakesScreenshot) DriverManager.getDriver();
-			byte[] screenShot = takesScreenshot.getScreenshotAs(OutputType.BYTES);
+			TakesScreenshot takesScreenshot = (TakesScreenshot) DriverManager
+					.getDriver();
+			byte[] screenShot = takesScreenshot
+					.getScreenshotAs(OutputType.BYTES);
 			scenario.attach(screenShot, "image/png", scenario.getName());
-			Allure.addAttachment(scenario.getName(), new ByteArrayInputStream(screenShot));
+			Allure.addAttachment(scenario.getName(),
+					new ByteArrayInputStream(screenShot));
 		}
 	}
 }
