@@ -12,7 +12,8 @@ import factory.DriverManager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageObjects.LaunchPage;
+import pages.LaunchPage;
+import utils.ConfigReader;
 
 public class LaunchStepDefinitions {
     private LaunchPage launchPg;
@@ -21,7 +22,7 @@ public class LaunchStepDefinitions {
 
     public LaunchStepDefinitions() {
         driver = DriverManager.getDriver();
-        driver.get(DriverManager.getAppUrl());
+        driver.get(ConfigReader.getProperty("appURL"));
         launchPg = new LaunchPage(driver);
     }
 
@@ -32,11 +33,7 @@ public class LaunchStepDefinitions {
 
     @When("User enters app url")
     public void user_enters_app_url() {
-        appURL = DriverManager.getAppUrl();
-        if (driver == null) {
-            driver = DriverManager.getDriver();
-        }
-        driver.get(appURL);
+    	driver.get(ConfigReader.getProperty("appURL"));
     }
 
     @Then("Display cards for {string}, {string}, {string}, and {string}")
@@ -100,7 +97,7 @@ public class LaunchStepDefinitions {
 
     @Given("User is in her balance home page")
     public void user_is_in_her_balance_home_page() {
-        appURL = DriverManager.getAppUrl();
+    	appURL=ConfigReader.getProperty("appURL");
         driver.get(appURL);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.urlContains("home"));
