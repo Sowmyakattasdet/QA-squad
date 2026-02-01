@@ -18,7 +18,7 @@ public class PageObjectManager {
 
 	}
 
-	public LaunchPage getLaunchPage() {
+	public LaunchPageShiva getLaunchPage() {
 
 		if (launchPage == null) {
 			launchPage = new LaunchPage(driver);
