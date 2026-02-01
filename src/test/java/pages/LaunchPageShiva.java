@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import utils.ConfigReader;
 
-public class LaunchPage extends BasePage {
+public class LaunchPageShiva extends BasePage {
 
 	public LaunchPage(WebDriver driver) {
 		super(driver);
@@ -18,3 +18,4 @@ public class LaunchPage extends BasePage {
 	}
 
 }
+
