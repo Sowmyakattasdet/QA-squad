@@ -3,28 +3,29 @@ package utils;
 import java.io.InputStream;
 import java.util.Properties;
 
-import factory.DriverManager;
-
 public class ConfigReader {
-	Properties prop = null;
-	 public final static String CONFIG_DATA_FILE_NAME = "config.properties";
+	private static Properties prop = new Properties();
+	public final static String CONFIG_DATA_FILE_NAME = "config.properties";
 
+	static {
 
-	public Properties loadProperties() {
-        try {
-            prop = new Properties();
-            String configFileResourcePath = "/config/";
-            InputStream configResourceInputStream = getClass().getResourceAsStream(configFileResourcePath + CONFIG_DATA_FILE_NAME);
-            prop.load(configResourceInputStream);
-            DriverManager.setAppUrl(prop.getProperty("appURL"));
+		try {
 
-            if (DriverManager.getBrowserType() == null ||DriverManager.getBrowserType().isEmpty()) {
-            	DriverManager.setBrowserType(prop.getProperty("browser"));
-            }
-        } catch (Exception e) {
-            LoggerFactory.getLogger().error("Unexcepted error occurred when loading configuration. {}", e.getMessage());
-        }
+			String configFileResourcePath = "config/";
+			InputStream configResourceInputStream = ConfigReader.class
+					.getClassLoader().getResourceAsStream(
+							configFileResourcePath + CONFIG_DATA_FILE_NAME);
+			prop.load(configResourceInputStream);
 
-        return prop;
-    }   
+		} catch (Exception e) {
+			LoggerFactory.getLogger().error(
+					"Unexcepted error occurred when loading configuration. {}",
+					e.getMessage());
+		}
+	}
+
+	public static String getProperty(String key) {
+
+		return prop.getProperty(key.trim());
+	}
 }
