@@ -3,7 +3,7 @@ package pom;
 import org.openqa.selenium.WebDriver;
 
 import pages.ActivityInsightsMenuPage;
-import pages.LaunchPage;
+import pages.LaunchPageShiva;
 
 public class PageObjectManager {
 
@@ -21,7 +21,7 @@ public class PageObjectManager {
 	public LaunchPageShiva getLaunchPage() {
 
 		if (launchPage == null) {
-			launchPage = new LaunchPage(driver);
+			launchPage = new LaunchPageShiva(driver);
 		}
 		return launchPage;
 
@@ -36,4 +36,3 @@ public class PageObjectManager {
 
 	}
 }
-
