@@ -8,7 +8,7 @@ import pages.LaunchPage;
 public class PageObjectManager {
 
 	private WebDriver driver;
-	private LaunchPage launchPage;
+	private LaunchPageShiva launchPage;
 	private ActivityInsightsMenuPage activityInsightsMenuPage;
 
 	public PageObjectManager(WebDriver driver) {
