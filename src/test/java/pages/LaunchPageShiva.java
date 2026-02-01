@@ -6,7 +6,7 @@ import utils.ConfigReader;
 
 public class LaunchPageShiva extends BasePage {
 
-	public LaunchPage(WebDriver driver) {
+	public LaunchPageShiva(WebDriver driver) {
 		super(driver);
 
 	}
@@ -18,4 +18,5 @@ public class LaunchPageShiva extends BasePage {
 	}
 
 }
+
 
