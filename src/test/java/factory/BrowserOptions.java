@@ -35,7 +35,7 @@ public class BrowserOptions {
         options.setAcceptInsecureCerts(true);
         options.setScriptTimeout(Duration.ofSeconds(60));
         options.addArguments("--incognito");
-        options.addArguments("--headless=new");
+       // options.addArguments("--headless=new");
         options.addArguments("--disable-gpu");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
