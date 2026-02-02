@@ -12,7 +12,7 @@ import factory.DriverManager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageObjects.LaunchPage;
+import pages.LaunchPage;
 
 public class LaunchStepDefinitions {
     private LaunchPage launchPg;
