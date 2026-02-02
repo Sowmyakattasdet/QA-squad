@@ -17,6 +17,9 @@ public class ActivityInsightsMenuPage extends BasePage {
 
 	@FindBy(xpath = "//button[text()='Log In']")
 	private WebElement homePageloginButton;
+	
+	
+
 
 	public ActivityInsightsMenuPage(WebDriver driver) {
 		super(driver);

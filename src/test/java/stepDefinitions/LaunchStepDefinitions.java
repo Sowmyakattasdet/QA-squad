@@ -1,4 +1,4 @@
-package stepDefinitions;
+/*package stepDefinitions;
 
 import java.time.Duration;
 
@@ -151,4 +151,4 @@ public class LaunchStepDefinitions {
         WebElement startper = wait.until(ExpectedConditions.elementToBeClickable(launchPg.BtnStartPersonJny));
         startper.click();
     }
-}
+}*/
