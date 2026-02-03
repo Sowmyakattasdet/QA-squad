@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(features = "src/test/resources/features",
         glue = {"hooks", "stepDefinitions"},
-        tags = "@Regression",        
+        tags = "@D2",        
         plugin = {"pretty",
                 "html:cucumber-reports.html",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
