@@ -151,8 +151,28 @@ public class DashboardPage extends BasePage {
 	@FindBy(xpath ="//h3/div/span")
 	List<WebElement> section;
 	
+	@FindBy(xpath ="//*[text()='Monthly Weight Goal (4% of body weight)']")
+	WebElement weeklygoalt;
 	
+	@FindBy(xpath ="//*[text()='Morning, before food']")
+	WebElement dailyweigh;
 	
+
+	@FindBy(xpath ="//*[contains(text(),'personalized re')]")
+	WebElement freep;
+	
+	@FindBy(xpath ="//*[@class='relative h-8 rounded-md mb-2']")
+	WebElement bmisl;
+	
+	@FindBy(xpath ="//*[@class='w-3 h-3 bg-black rounded-full']")
+	WebElement gradiant;
+	
+	@FindBy(xpath ="//*[text()='Info']")
+	WebElement info;
+	
+	@FindBy(xpath ="//*[text()='Free plan includes 7 days of limited tracking']")
+	WebElement fp;
+	//*[text()='Free plan includes 7 days of limited tracking']
 	
 	public DashboardPage(WebDriver driver) {
 		super(driver);
@@ -343,16 +363,44 @@ public class DashboardPage extends BasePage {
 		editprofile.click();
 		bodymetrics.click();
 		 String value= htfromedit.getAttribute("value");
-		 return Double.parseDouble(value);
-		
+		 return Double.parseDouble(value);		
 		
 	}
+	public String weeklytargwt() {
+		wait.until(ExpectedConditions.visibilityOf(weeklygoalt));
+		return weeklygoalt.getText().replaceAll("\\D+", "");
+			
+		 }
+	public String dailyweightxt(){
+		wait.until(ExpectedConditions.visibilityOf(dailyweigh));
+			return dailyweigh.getText();
+			}
+	public boolean freeplandetails(){
+		return wait.until(ExpectedConditions.visibilityOf(freep)).isDisplayed();
+		}
+	public boolean bmislider(){
+		return wait.until(ExpectedConditions.visibilityOf(bmisl)).isDisplayed();
+		}
+	public boolean gradiantslider(){
+		return wait.until(ExpectedConditions.visibilityOf(gradiant)).isDisplayed();
+		}
+	public String infolabel(){
+		wait.until(ExpectedConditions.visibilityOf(info));
+			return info.getText();
+			}
+	public String fptext(){
+		wait.until(ExpectedConditions.visibilityOf(fp));
+			return fp.getText();
+			}
+	public String fpt(){
+		String v="Free plan includes 7 days of limited tracking";
+			return v;
+			}
 	
 	
-//	public int weightnum() {
-//		String number=weightval.replaceAll("[^0-9]", "");
-//		System.out.println(number);
-//	}
+	
+	
+	
 		}
 	
 
