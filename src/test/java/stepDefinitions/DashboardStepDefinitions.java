@@ -29,8 +29,8 @@ public class DashboardStepDefinitions {
 	
 @Given("User is on the HerBalance auth page")
 public void user_is_on_the_her_balance_auth_page()  {
-	
-	driver.get("https://herbalance.numpyninja.com/auth");
+	dashboardPg.launchApplication();
+	//driver.get("https://herbalance.numpyninja.com/auth");
 	
 }
 
