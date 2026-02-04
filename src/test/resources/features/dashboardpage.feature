@@ -88,7 +88,7 @@ Feature: Testing dashboardpage in Herbalance
     
        @D21
   Scenario: Daily weigh in schedule display
-    Then Daily weigh in should be - "Morning before,break food"
+    Then Daily weigh in should be - "Morning, before food"
     
        @D22
   Scenario: subcription details should be displayed in 7-day goal
