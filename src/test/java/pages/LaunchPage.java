@@ -1,8 +1,6 @@
-<<<<<<< HEAD
+
 /*package pageObjects;
-=======
 package pages;
->>>>>>> 7c3bd379bd78d8011b7d938b0aa93f05cdba4a58
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -79,8 +77,8 @@ public class LaunchPage {
         return driver.getCurrentUrl();
     }
 
-}*/
+}
     public void launchApplication() {
 		driver.get(ConfigReader.getProperty("appURL"));
 	}
-
+*/
