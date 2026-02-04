@@ -240,23 +240,8 @@ public void bmi_reference_guide_component_should_be_displayed_with_a_gradient_sl
 	Assert.assertTrue(actout,"gradiant slider is not displayed");
 	
 }
-@Then("slider should display a continuous gradient from blue → yellow → orange → red, representing increasing BMI values")
-public void slider_should_display_a_continuous_gradient_from_blue_yellow_orange_red_representing_increasing_bmi_values() {
-    
-}
 
-@Then("Labels {string}, {string}, {string}, and {string} should be visible and color-coded accordingly")
-public void labels_and_should_be_visible_and_color_coded_accordingly(String string, String string2, String string3, String string4) {
-   
-}
-@Then("Circular pointer should automatically be positioned on the slider corresponding to the user’s BMI value")
-public void circular_pointer_should_automatically_be_positioned_on_the_slider_corresponding_to_the_user_s_bmi_value() {
-  
-}
-@Then("Slider should not allow manual movement; it should remain fixed based on the user’s BMI")
-public void slider_should_not_allow_manual_movement_it_should_remain_fixed_based_on_the_user_s_bmi() {
-    
-}
+
 @Then("{string} label should be visible above the slider")
 public void label_should_be_visible_above_the_slider(String expout) {
 	String actout=dashboardPg.infolabel();
