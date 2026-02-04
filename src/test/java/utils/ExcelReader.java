@@ -1,5 +1,6 @@
 package utils;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +13,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class ExcelReader {
-	 private Workbook workbook;
+	 private static Workbook workbook;
 	    private DataFormatter formatter = new DataFormatter();
 
 	    public ExcelReader(String filename) {
@@ -50,7 +51,22 @@ public class ExcelReader {
 			}
 			throw new IllegalArgumentException("Scenario not found in Excel: " + scenarioName);
 		}
-
+		public static String[] getDataByScenarioName(String scenarioName) throws IOException {
+	        Sheet sheet = workbook.getSheetAt(0);
+			for (Row row : sheet) {
+			    if (row.getRowNum() == 0) continue; // skip header
+			    Cell scenarioCell = row.getCell(0);
+			    if (scenarioCell.getStringCellValue().equalsIgnoreCase(scenarioName)) {
+			        String[] data = new String[5]; // Email, Password, ConfirmPassword, AcceptTerms, ExpectedError
+			        for (int i = 1; i <= 5; i++) {
+			            Cell cell = row.getCell(i);
+			            data[i - 1] = (cell != null) ? cell.getStringCellValue() : null;
+			        }
+			        return data;
+			    }
+			}
+			throw new IllegalArgumentException("Scenario not found in Excel: " + scenarioName);
+	    }
 	    private Map<String, String> extractRowData(Row headerRow, Row dataRow) {
 	        Map<String, String> data = new HashMap<>();
 	        for (int i = 0; i < headerRow.getLastCellNum(); i++) {
