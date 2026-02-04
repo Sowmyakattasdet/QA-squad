@@ -204,6 +204,75 @@ public void should_display_weight_entered_by_user() {
 	Assert.assertEquals(actout, expout,"weight is not matching");
 }
 
+@Then("Goal weight should be displayed as the difference from the weekly target")
+public void goal_weight_should_be_displayed_as_the_difference_from_the_weekly_target() {
+    
+}
+
+@Then("Weekly target should be {double} kg")
+public void weekly_target_should_be_kg(Double expout) {
+	String actout=dashboardPg.weeklytargwt();
+	Assert.assertEquals(actout, expout,"target is not matching");
+	
+}
+@Then("Daily weigh in should be - {string}")
+public void daily_weigh_in_should_be(String expout) {
+	String actout=dashboardPg.dailyweightxt();
+	Assert.assertEquals(actout, expout,"Morning, before food is not visible");
+
+}
+
+@Then("Subcription details should be present in {int}-day goal section")
+public void subcription_details_should_be_present_in_day_goal_section(Integer int1) {
+	boolean actout=dashboardPg.freeplandetails();
+	Assert.assertTrue(actout,"subtext is not located");
+}
+
+@Then("Slider should be present in BMI reference guide")
+public void slider_should_be_present_in_bmi_reference_guide() {
+	boolean actout=dashboardPg.bmislider();
+	Assert.assertTrue(actout,"bmi slider is not present");
+}
+
+@Then("BMI Reference Guide component should be displayed with a gradient slider and labeled ranges")
+public void bmi_reference_guide_component_should_be_displayed_with_a_gradient_slider_and_labeled_ranges() {
+	boolean actout=dashboardPg.gradiantslider();
+	Assert.assertTrue(actout,"gradiant slider is not displayed");
+	
+}
+@Then("slider should display a continuous gradient from blue → yellow → orange → red, representing increasing BMI values")
+public void slider_should_display_a_continuous_gradient_from_blue_yellow_orange_red_representing_increasing_bmi_values() {
+    
+}
+
+@Then("Labels {string}, {string}, {string}, and {string} should be visible and color-coded accordingly")
+public void labels_and_should_be_visible_and_color_coded_accordingly(String string, String string2, String string3, String string4) {
+   
+}
+@Then("Circular pointer should automatically be positioned on the slider corresponding to the user’s BMI value")
+public void circular_pointer_should_automatically_be_positioned_on_the_slider_corresponding_to_the_user_s_bmi_value() {
+  
+}
+@Then("Slider should not allow manual movement; it should remain fixed based on the user’s BMI")
+public void slider_should_not_allow_manual_movement_it_should_remain_fixed_based_on_the_user_s_bmi() {
+    
+}
+@Then("{string} label should be visible above the slider")
+public void label_should_be_visible_above_the_slider(String expout) {
+	String actout=dashboardPg.infolabel();
+	Assert.assertEquals(actout, expout,"info label is not present");
+}
+@Then("Message “Free plan includes {int} days of limited tracking” should be displayed clearly below the slider")
+public void message_free_plan_includes_days_of_limited_tracking_should_be_displayed_clearly_below_the_slider(Integer int1) {
+	String actout=dashboardPg.fptext();
+	String expout=dashboardPg.fpt();
+	Assert.assertEquals(actout, expout,"info label is not present");
+}
+
+
+
+
+
 
 	}
 
