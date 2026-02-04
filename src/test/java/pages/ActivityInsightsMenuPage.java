@@ -1,8 +1,12 @@
 package pages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import webElementActions.ElementActions;
 
 public class ActivityInsightsMenuPage extends BasePage {
 
@@ -21,8 +25,136 @@ public class ActivityInsightsMenuPage extends BasePage {
 	
 
 
+	@FindBy(xpath = "//span[text()='Activity Insights']")
+	private WebElement activityInsightsMenu;
+
+	@FindBy(xpath = "//div[contains(text(),'Track Weight')]")
+	private WebElement trackWeightSubMenu;
+
+	//
+	@FindBy(xpath = "//h1[text()='Weight Tracking']")
+	private WebElement subMenuPageTitle;
+
+	@FindBy(xpath = "//h1[text()='Weight Tracking']/../p")
+	private WebElement subTitle;
+
+	@FindBy(xpath = "//button[text()='Back to Dashboard']")
+	private WebElement backToDashboard;
+
+	@FindBy(xpath = "//p[text()='Starting Weight']")
+	private WebElement cardStartWeight;
+
+	@FindBy(xpath = "//p[text()='Starting Weight']/..//p[contains(@class,'font-bold')]")
+	private WebElement getStartingWeight;
+
+	@FindBy(xpath = "//p[text()='Current Weight']")
+	private WebElement cardCurrentWeight;
+
+	@FindBy(xpath = "//p[text()='Current Weight']/..//p[contains(@class,'font-bold')]")
+	private WebElement getCurrentWeight;
+
+	@FindBy(xpath = "//p[text()='Goal Weight']")
+	private WebElement cardGoalWeight;
+
+	@FindBy(xpath = "//p[text()='Goal Weight']/..//p[contains(@class,'font-bold')]")
+	private WebElement getGoalWeight;
+
+	@FindBy(xpath = "//button[contains(text(),'Log Weight')]")
+	private WebElement weightLogButton;
+
+	@FindBy(xpath = "//input[@type='number' and @placeholder='Enter your weight']")
+	private WebElement enterWeightField;
+
+	@FindBy(id = "bmi")
+	private WebElement captureBMIField;
+
+	@FindBy(xpath = "//span[contains(text(),'Day') and contains(@class,'text-sm')]")
+	private WebElement daycountofPlan;
+
+	@FindBy(xpath = "//label[contains(text(),'Weight (')]")
+	private WebElement WeightLabel;
+
+	@FindBy(xpath = "//label[text()='BMI (Auto-calculated)']")
+	private WebElement bmiAutoCalculateLabel;
+
+	@FindBy(xpath = "//label[text()='Note (Optional)']")
+	private WebElement notelablel;
+
+	@FindBy(xpath = "//div[contains(@class,'items-center') and contains(text(),'Log')]")
+	// @FindBy(xpath = "//div[text()='Log Today's Weight']")
+
+	private WebElement logTodaysWeightLabel;
+
+	@FindBy(xpath = "//*[local-name()='line' and contains(@class,'recharts-reference-line-line')]")
+	private WebElement goalRefLine;
+
+	@FindBy(xpath = "//*[name()='tspan' and contains(text(),'Goal weight')]")
+	private WebElement goalRefLinelabel;
+
+	@FindBy(xpath = "//*[name()='tspan' and contains(text(),'Weight (kg)')]")
+	private WebElement yAxisLabel;
+
+	@FindBy(xpath = "//*[name()='g' and contains(@class,'recharts-xAxis xAxis')]//*[name()='g' and contains(@class,'recharts-layer')]")
+	private List<WebElement> xAxislabel;
+
+	@FindBy(xpath = "//h3[text()='Weight Progression Over Time']")
+	private WebElement graphHeader;
+
+	@FindBy(xpath = "//p[text()='Weight Lost']/following-sibling::p")
+	private WebElement weightLost;
+
+	@FindBy(xpath = "//p[text()='Remaining']/following-sibling::p")
+	private WebElement remainingWeight;
+
+	// @FindBy(xpath = "//span[text()='Weight Loss
+	// Progress']/../following-sibling::div[@role='progressbar']")
+	@FindBy(xpath = "//div[@role='progressbar']")
+	private WebElement progressBar;
+
+	@FindBy(xpath = "//h3[text()='Progress Overview']")
+	private WebElement progressOverviewHeader;
+
+	@FindBy(xpath = "//span[text()='Weight Loss Progress']")
+	private WebElement weightLossProgressHeader;
+
+	@FindBy(xpath = "//span[text()='Weight Loss Progress']/following-sibling::span")
+	private WebElement weightLossPercentage;
+
+	@FindBy(xpath = "//div[contains(@class,'md:grid-cols-3')]//div[contains(@class,'space-x-3')]")
+	private List<WebElement> threeCards;
+
+	@FindBy(xpath = "//span[text()='Starting']//parent::div/parent::div//p[contains(@class,'font-semibold')]")
+	private WebElement dashBoardWeight;
+
+	@FindBy(xpath = "//span[text()='Current']//parent::div/parent::div//p[contains(@class,'font-semibold')]")
+	private WebElement dashBoardCurrentWeight;
+
+	@FindBy(xpath = "//span[contains(text(),'Goal:')]")
+	private WebElement dashBoardGoalWeight;
+
+	@FindBy(xpath = "//span[contains(text(),'days left')]")
+	private WebElement daysleftfromDB;
+
+	@FindBy(xpath = "//span[contains(text(),'Day')]")
+	private WebElement dayscountfromInsight;
+
+	// span[contains(text(),'Day')]
+	// span[contains(text(),'days left')]
+
+	// p[text()='Joined Date']/../..//p[contains(@class,'text-sm')]
+	// p[contains(text(),"Today's Date")]/../..//p[contains(@class,'text-sm')]
+	// p[contains(text(),"Joined
+	// Date")]/ancestor::div[2]//p[contains(@class,'text-sm')]
+
+	// p[contains(text(),"Today'sDate")]/ancestor::div[2]//p[contains(@class,'text-sm')]
+
+	// p[text()='Starting Weight']
+
+	ElementActions elementActions;
+
 	public ActivityInsightsMenuPage(WebDriver driver) {
 		super(driver);
+		elementActions = new ElementActions(driver);
 
 	}
 
@@ -50,4 +182,218 @@ public class ActivityInsightsMenuPage extends BasePage {
 		// Thread.sleep(2000);
 	}
 
+	public void clickOnMenu() {
+		elementActions.clickAction(activityInsightsMenu);
+
+	}
+
+	public void clickOnSubMenu() {
+		elementActions.clickAction(trackWeightSubMenu);
+
+	}
+
+	public String validateSubMenuHeaderText() {
+		return (elementActions.getText(subMenuPageTitle));
+	}
+
+	public String validateSubTitle() {
+		return (elementActions.getText(subTitle));
+	}
+
+	public boolean validateBackToDashboard() {
+		return (elementActions.isElemnetDisplayed(backToDashboard));
+
+	}
+
+	public int validateThreeCards() {
+		return (elementActions.getElementCount(threeCards));
+	}
+
+	public boolean validateStartingWeight() {
+
+		return (elementActions.isElemnetDisplayed(cardStartWeight));
+
+	}
+
+	public boolean validateCurrentWeight() {
+		return (elementActions.isElemnetDisplayed(cardCurrentWeight));
+	}
+
+	public boolean validateGoalWeight() {
+		return (elementActions.isElemnetDisplayed(cardGoalWeight));
+	}
+
+	public String getWeightfromDashboard() {
+		String weightonDashboard = (elementActions.getText(dashBoardWeight));
+		return changeValueToDecimal(weightonDashboard);
+
+	}
+
+	public String getCurrentWeightfromDashboard() {
+		String weightonDashboard = (elementActions
+				.getText(dashBoardCurrentWeight));
+		return changeValueToDecimal(weightonDashboard);
+
+	}
+
+	public String getGoalWeightfromDashboard() {
+		String weightonDashboard = (elementActions
+				.getText(dashBoardGoalWeight));
+		return changeValueToDecimal(weightonDashboard);
+
+	}
+
+	public String changeValueToDecimal(String stringToChange) {
+		String[] weight = stringToChange.split(" ");
+		String number = weight[0];
+		String unit = weight[1];
+
+		if (!number.contains(".")) {
+			number = number + ".0";
+		}
+
+		return (number + " " + unit);
+	}
+	public String getStartingWeightfromInsight() {
+		return (elementActions.getText(getStartingWeight));
+	}
+
+	public void navigateBack() {
+		driver.navigate().back();
+	}
+
+	public String getCurrentWeight() {
+		return (elementActions.getText(getCurrentWeight));
+	}
+
+	public String getGoalWeight() {
+		return (elementActions.getText(getGoalWeight));
+
+	}
+
+	public String getProgressSectionHeader() {
+		return (elementActions.getText(progressOverviewHeader));
+	}
+
+	public String getProgressSectionSubHeader() {
+		return (elementActions.getText(weightLossProgressHeader));
+	}
+
+	public boolean getCompletionPercentage() {
+		String actualPercentage = (elementActions
+				.getText(weightLossPercentage));
+		String regex = "(100(\\.0+)?|[1-9]?\\d(\\.\\d+)?)% Complete";
+		return (actualPercentage.matches(regex));
+	}
+
+	public boolean validateProgressBar() {
+		return (elementActions.isElemnetDisplayed(progressBar));
+	}
+
+	public boolean getWeightLost() {
+		String weightLostvalue = (elementActions.getText(weightLost));
+		String regex = "-?\\d+(\\.\\d+)?\\skg";
+		return (weightLostvalue.matches(regex));
+	}
+
+	public boolean getWeightRemaining() {
+
+		String weightRemaining = elementActions.getText(remainingWeight);
+		String regex = "-?\\d+(\\.\\d+)?\\skg";
+		return (weightRemaining.matches(regex));
+	}
+
+	public String getGraphSectionHeader() {
+		return (elementActions.getText(graphHeader));
+	}
+
+	public boolean getxAxisLabel() {
+		int labelcnt = elementActions.getElementCount(xAxislabel);
+		if (labelcnt == 7) {
+
+			labelcnt = 1;
+			for (WebElement elements : xAxislabel) {
+
+				String actualxlabel = elements.getText();
+				String expectedlabel = "Day " + labelcnt;
+				labelcnt++;
+				if (!actualxlabel.equals(expectedlabel)) {
+					return false;
+				}
+
+			}
+			return true;
+		}
+		return false;
+	}
+
+	public String yaxisLabelValidation() {
+		return (elementActions.getText(yAxisLabel));
+	}
+
+	public String validateReferenceline() {
+
+		return elementActions.getText(goalRefLinelabel);
+
+	}
+
+	public String validateLogTodayheader() {
+
+		if (elementActions.isElemnetDisplayed(logTodaysWeightLabel)) {
+			System.out.println(elementActions.getText(logTodaysWeightLabel));
+			return elementActions.getText(logTodaysWeightLabel);
+		}
+		return null;
+
+	}
+
+	public String bmiWeightFieldLable() {
+		return elementActions.getText(WeightLabel);
+	}
+
+	public String bmiNotetFieldLable() {
+		return elementActions.getText(notelablel);
+	}
+
+	public String bmiAutoCalcFieldLable() {
+		return elementActions.getText(bmiAutoCalculateLabel);
+	}
+
+	public int getDaysleftDB() {
+		String daysLeft = elementActions.getText(daysleftfromDB);
+		String[] day = daysLeft.split(" ");
+		return (7 - Integer.parseInt(day[0]));
+	}
+
+	public String getDaysCountInsightPage() {
+		return elementActions.getText(dayscountfromInsight);
+	}
+
+	public boolean validatebmiAutoCalculate() {
+
+		System.out.println("value is"
+				+ elementActions.getAttribute(captureBMIField, "value"));
+		if (elementActions.getAttribute(captureBMIField, "value")
+				.equalsIgnoreCase("")) {
+
+			elementActions.sendKeys(enterWeightField, "22");
+
+			System.out.println("value is"
+					+ elementActions.getAttribute(captureBMIField, "value"));
+			String BMI = elementActions.getAttribute(captureBMIField, "value");
+			return (BMI.matches("\\d+\\.\\d+"));
+		}
+
+		return false;
+
+	}
+
+	public boolean validateLogWeightButtondisabled() {
+		return (elementActions.isElementEnabled(weightLogButton));
+	}
+
+	public boolean validateLogWeightButtondEnabled() {
+		elementActions.sendKeys(enterWeightField, "22");
+		return (elementActions.isElementEnabled(weightLogButton));
+	}
 }

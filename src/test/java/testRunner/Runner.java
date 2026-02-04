@@ -11,6 +11,7 @@ import io.cucumber.testng.CucumberOptions;
          //glue = {"stepDefinitions"},
         
         tags = "@editYourProfileBasicInfo",        
+       // tags = "@SignUpFunctional",        
         plugin = {"pretty",
                 "html:cucumber-reports.html",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
