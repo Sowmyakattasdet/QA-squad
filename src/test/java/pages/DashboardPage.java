@@ -234,6 +234,10 @@ public class DashboardPage extends BasePage {
 	@FindBy(xpath ="//*[text()='Upgrade to Premium']")
 	private	WebElement upgradebtn;
 	
+	@FindBy(xpath ="//*[@class='text-sm']")
+	private	WebElement stwt;
+	
+	
 	public DashboardPage(WebDriver driver) {
 		super(driver);
 		
@@ -406,6 +410,12 @@ public class DashboardPage extends BasePage {
 		wait.until(ExpectedConditions.visibilityOf(onbweight));
 			return onbweight.getText().replaceAll("[^0-9]", "");
 			}
+	public String startwt(){
+		wait.until(ExpectedConditions.visibilityOf(stwt));
+			return stwt.getText().replaceAll("[^0-9]", "");
+			}
+	
+	
 	public Double getweightfromedit() {
 		userhover.click();
 		editprofile.click();
