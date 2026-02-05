@@ -3,6 +3,7 @@ package pom;
 import org.openqa.selenium.WebDriver;
 
 import pages.ActivityInsightsMenuPage;
+import pages.DashboardPage;
 import pages.EditYourProfileBodyMetricsPage;
 import pages.EditYourProfileFunctionalTestingPage;
 import pages.EditYourProfilePageBasicInfo;
@@ -65,11 +66,12 @@ public class PageObjectManager {
 
 	}
 
-	public DashboardPage getDashboardPage()
-	if (dashboardpage == null) {
-		dashboardpage = new DashboardPage(driver);
+	public DashboardPage getDashboardPage() {
+		if (dashboardpage == null) {
+			dashboardpage = new DashboardPage(driver);
+		}
+		return dashboardpage;
 	}
-	return dashboardpage;
 
 	public EditYourProfileBodyMetricsPage getEditYourProfileBodyMetricsPage() {
 
