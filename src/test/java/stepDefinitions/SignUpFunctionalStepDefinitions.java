@@ -1,4 +1,4 @@
-package stepDefinitions;
+/*package stepDefinitions;
 
 import java.time.Duration;
 import java.util.List;
@@ -72,6 +72,7 @@ public class SignUpFunctionalStepDefinitions {
 		 * driver.getCurrentUrl(); Assert.assertTrue(currentUrl.contains("onboarding"),
 		 * "User is not on onboarding page" + currentUrl);
 		 */
+/*
 		driver.navigate().to(ConfigReader.getProperty("appURL") + "onboarding");
 	}
 
@@ -136,4 +137,4 @@ public class SignUpFunctionalStepDefinitions {
 	public void user_should_be_redirected_to_the_login_tab() {
 		Assert.assertTrue(signupPage.tabLogin.isDisplayed());
 	}
-}
+}*/

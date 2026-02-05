@@ -3,7 +3,8 @@ package pom;
 import org.openqa.selenium.WebDriver;
 
 import pages.ActivityInsightsMenuPage;
-import pages.EditYourProfileBodyMetricsInfoUIverificationPage;
+import pages.EditYourProfileBodyMetricsPage;
+import pages.EditYourProfileFunctionalTestingPage;
 import pages.EditYourProfilePageBasicInfo;
 import pages.LaunchPageShiva;
 
@@ -13,9 +14,9 @@ public class PageObjectManager {
 	private WebDriver driver;
 	private LaunchPageShiva launchPage;
 	private ActivityInsightsMenuPage activityInsightsMenuPage;
-	private EditYourProfileBodyMetricsInfoUIverificationPage editYourMetricProfilePage;
 	private  EditYourProfilePageBasicInfo editYourProfilePageBasicInfo;
-	
+	private EditYourProfileFunctionalTestingPage editYourProfileFunctionalTestingPage;
+	private EditYourProfileBodyMetricsPage editYourProfileBodyMetricsPage;
 
 
 	public PageObjectManager(WebDriver driver) {
@@ -43,12 +44,12 @@ public class PageObjectManager {
 
 	}
 	
-	public EditYourProfileBodyMetricsInfoUIverificationPage getEditYourMetricProfilePage() {
+	public EditYourProfileBodyMetricsPage getEditYourProfileBodyMetricsPage() {
 
-		if (editYourMetricProfilePage == null) {
-			editYourMetricProfilePage = new EditYourProfileBodyMetricsInfoUIverificationPage(driver);
+		if (editYourProfileBodyMetricsPage == null) {
+			editYourProfileBodyMetricsPage = new EditYourProfileBodyMetricsPage(driver);
 		}
-		return editYourMetricProfilePage;
+		return editYourProfileBodyMetricsPage;
 	}
 
 	public EditYourProfilePageBasicInfo getEditYourProfilePageBasicInfo() {
@@ -56,6 +57,14 @@ public class PageObjectManager {
 			editYourProfilePageBasicInfo = new EditYourProfilePageBasicInfo(driver);
 		}
 		return editYourProfilePageBasicInfo;
+	}
+	
+	public EditYourProfileFunctionalTestingPage getEditYourProfileFunctionalTestingPage() {
+		if(editYourProfileFunctionalTestingPage == null) {
+			editYourProfileFunctionalTestingPage = new EditYourProfileFunctionalTestingPage(driver);
+			}
+		return editYourProfileFunctionalTestingPage;
+		
 	}
 	
 }

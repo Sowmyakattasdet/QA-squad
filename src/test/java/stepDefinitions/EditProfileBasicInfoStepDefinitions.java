@@ -3,9 +3,7 @@ package stepDefinitions;
 import org.testng.Assert;
 
 import hooks.Hooks;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import pom.PageObjectManager;
 
 public class EditProfileBasicInfoStepDefinitions {
@@ -17,20 +15,6 @@ public class EditProfileBasicInfoStepDefinitions {
 	 
  }
  
-
-	/*@Given("User is on the Her Balance Dashboard with the Edit Profile submenu expanded")
-	public void user_is_on_the_her_balance_dashboard_with_the_edit_profile_submenu_expanded() throws InterruptedException {
-		pom.geActivityInsightsMenuPage().Login();
-		Thread.sleep(2000);
-
-	}
-	
-	@When("User click profile button to edit profile")
-	public void user_click_profile_button_to_edit_profile() throws InterruptedException {
-	    pom.getEditYourMetricProfilePage().clickProfileBtn();
-		Thread.sleep(2000);
-
-	}*/
 	
  @Then("{string} should be visible inside section on basic tab")
  public void should_be_visible_inside_section_on_basic_tab(String string) {
@@ -64,13 +48,6 @@ public class EditProfileBasicInfoStepDefinitions {
 	public void next_body_metrics_button_should_be_visible_enabled() {
 	   Assert.assertTrue(pom.getEditYourProfilePageBasicInfo().metricsButton.isEnabled());
 	}
-
-
-
-/*@Then("Name and Age fields should be properly aligned vertically with equal spacing")
-public void name_and_age_fields_should_be_properly_aligned_vertically_with_equal_spacing() {
- 
-}*/
 }
 
 

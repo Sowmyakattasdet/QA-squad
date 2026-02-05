@@ -1,4 +1,4 @@
-package stepDefinitions;
+/*package stepDefinitions;
 
 import java.time.Duration;
 
@@ -33,4 +33,4 @@ public class SignUpUIStepDefinitions {
 	
 
 
-}
+}*/

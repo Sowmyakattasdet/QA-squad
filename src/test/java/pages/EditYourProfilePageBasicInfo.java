@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class EditYourProfilePageBasicInfo extends BasePage {
-	
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	 @FindBy(css = ".lucide.lucide-user.h-5.w-5.text-white")
 	 public WebElement profileBtn;
 	
@@ -39,15 +39,8 @@ public class EditYourProfilePageBasicInfo extends BasePage {
 
 	}
 	
-	
-	/*public void clickprofileBtn() {
-		profileBtn.click();
-	}*/
-	
-	
 	public void clickProfileBtn() throws InterruptedException {
 		profileBtn.click();
-		Thread.sleep(3000);
 		editProfileBtn.click();
 	}
 	
