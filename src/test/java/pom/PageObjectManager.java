@@ -20,6 +20,7 @@ public class PageObjectManager {
 	private EditYourProfileFunctionalTestingPage editYourProfileFunctionalTestingPage;
 	private EditYourProfileBodyMetricsPage editYourProfileBodyMetricsPage;
 	private LoginPage loginPage;
+	private DashboardPage dashboardpage;
 
 	public PageObjectManager(WebDriver driver) {
 		// driverFactory = new DriverFactory();
@@ -63,6 +64,12 @@ public class PageObjectManager {
 		return loginPage;
 
 	}
+
+	public DashboardPage getDashboardPage()
+	if (dashboardpage == null) {
+		dashboardpage = new DashboardPage(driver);
+	}
+	return dashboardpage;
 
 	public EditYourProfileBodyMetricsPage getEditYourProfileBodyMetricsPage() {
 
