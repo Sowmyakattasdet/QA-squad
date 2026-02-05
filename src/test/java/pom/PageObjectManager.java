@@ -3,8 +3,11 @@ package pom;
 import org.openqa.selenium.WebDriver;
 
 import pages.ActivityInsightsMenuPage;
+import pages.EditYourProfileBodyMetricsPage;
+import pages.EditYourProfileFunctionalTestingPage;
+import pages.EditYourProfilePageBasicInfo;
 import pages.LaunchPage;
-
+import pages.LoginPage;
 import pages.SignUpPage;
 
 public class PageObjectManager {
@@ -13,6 +16,10 @@ public class PageObjectManager {
 	private LaunchPage launchPage;
 	private ActivityInsightsMenuPage activityInsightsMenuPage;
 	private SignUpPage signUpPage;
+	private EditYourProfilePageBasicInfo editYourProfilePageBasicInfo;
+	private EditYourProfileFunctionalTestingPage editYourProfileFunctionalTestingPage;
+	private EditYourProfileBodyMetricsPage editYourProfileBodyMetricsPage;
+	private LoginPage loginPage;
 
 	public PageObjectManager(WebDriver driver) {
 		// driverFactory = new DriverFactory();
@@ -38,13 +45,48 @@ public class PageObjectManager {
 		return activityInsightsMenuPage;
 
 	}
-	
+
 	public SignUpPage getSignUpPage() {
 
 		if (signUpPage == null) {
 			signUpPage = new SignUpPage(driver);
 		}
 		return signUpPage;
+
+	}
+
+	public LoginPage getLoginPage() {
+
+		if (loginPage == null) {
+			loginPage = new LoginPage(driver);
+		}
+		return loginPage;
+
+	}
+
+	public EditYourProfileBodyMetricsPage getEditYourProfileBodyMetricsPage() {
+
+		if (editYourProfileBodyMetricsPage == null) {
+			editYourProfileBodyMetricsPage = new EditYourProfileBodyMetricsPage(
+					driver);
+		}
+		return editYourProfileBodyMetricsPage;
+	}
+
+	public EditYourProfilePageBasicInfo getEditYourProfilePageBasicInfo() {
+		if (editYourProfilePageBasicInfo == null) {
+			editYourProfilePageBasicInfo = new EditYourProfilePageBasicInfo(
+					driver);
+		}
+		return editYourProfilePageBasicInfo;
+	}
+
+	public EditYourProfileFunctionalTestingPage getEditYourProfileFunctionalTestingPage() {
+		if (editYourProfileFunctionalTestingPage == null) {
+			editYourProfileFunctionalTestingPage = new EditYourProfileFunctionalTestingPage(
+					driver);
+		}
+		return editYourProfileFunctionalTestingPage;
 
 	}
 }

@@ -1,5 +1,5 @@
-
-@loginui
+@Run
+#@loginui
 Feature: Auth Page UI Verification
 
   @loginui01
