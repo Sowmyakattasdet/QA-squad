@@ -1,4 +1,4 @@
-@Launch @Regression
+@Launch @Run
 Feature: Launch Page Functionality
 
   # Launch Page in Her Balance - Non functional

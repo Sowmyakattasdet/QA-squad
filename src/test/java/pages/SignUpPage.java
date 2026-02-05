@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SignUpPage {
+public class SignUpPage extends BasePage {
 	WebDriver driver;
 
 	@FindBy(xpath = "//input[@type='email' and @name='username']")
@@ -53,8 +53,10 @@ public class SignUpPage {
 	public List<WebElement> inputFields;
 
 	public SignUpPage(WebDriver indriver) {
-		this.driver = indriver;
-		PageFactory.initElements(indriver, this);
+		////this.driver = indriver;
+		//PageFactory.initElements(indriver, this);
+		
+		super(indriver);
 	}
 
 	public void enterEmail(String email) {
