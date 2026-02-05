@@ -9,8 +9,7 @@
 		<maven.compiler.source>21</maven.compiler.source>
 		<maven.compiler.target>21</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-	
+	</properties>	
 	<dependencies>
 		<!--
 		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -90,8 +89,7 @@
 			<artifactId>jna</artifactId>
 			<version>5.13.0</version> <!-- or latest -->
 		</dependency>
-
-	</dependencies>
+</dependencies>
 	<build>
 			<plugins>
 				<plugin>
@@ -116,5 +114,6 @@
 					</configuration>
 				</plugin>
 			</plugins>
-	</build>
+	</build>               
+    
 </project>

@@ -1,4 +1,5 @@
-/*package stepDefinitions;
+
+package stepDefinitions;
 
 import java.time.Duration;
 import java.util.List;
@@ -20,7 +21,7 @@ import utils.ConfigReader;
 import utils.ExcelReader;
 import utils.LoggerFactory;
 
-public class SignUpFunctionalStepDefinitions {
+public class SignUpStepDefinitions {
 	private WebDriver driver;
 	private LaunchPage launchPg;
 	private SignUpPage signupPage;
@@ -31,7 +32,7 @@ public class SignUpFunctionalStepDefinitions {
 	String expectedError;
 	String actualError;
 
-	public SignUpFunctionalStepDefinitions() {
+	public SignUpStepDefinitions() {
 		driver = DriverManager.getDriver();
 		driver.get(ConfigReader.getProperty("appURL"));
 		launchPg = new LaunchPage(driver);
@@ -41,6 +42,11 @@ public class SignUpFunctionalStepDefinitions {
 	@Given("User clicked Sign up button in home page")
 	public void user_clicked_sign_up_button_in_home_page() {
 		launchPg.clickSignUpButton();
+	}
+
+	@Given("User is on the HerBalance launch page")
+	public void user_is_on_the_herBalance_launch_page() {
+		driver.get(ConfigReader.getProperty("appURL"));
 	}
 
 	@Given("User is on the HerBalance auth page")
@@ -72,7 +78,6 @@ public class SignUpFunctionalStepDefinitions {
 		 * driver.getCurrentUrl(); Assert.assertTrue(currentUrl.contains("onboarding"),
 		 * "User is not on onboarding page" + currentUrl);
 		 */
-/*
 		driver.navigate().to(ConfigReader.getProperty("appURL") + "onboarding");
 	}
 
@@ -137,4 +142,81 @@ public class SignUpFunctionalStepDefinitions {
 	public void user_should_be_redirected_to_the_login_tab() {
 		Assert.assertTrue(signupPage.tabLogin.isDisplayed());
 	}
-}*/
+
+	// ========================================================================================================
+	@Then("Email ID input field with placeholder {string} should be visible")
+	public void email_id_input_field_with_placeholder_should_be_visible(String placeholder) {
+		LoggerFactory.getLogger().info("Verifying Email input field and its placeholder text...");
+		Assert.assertTrue(signupPage.isEmailIdDisplayed(), "Email field not visible");
+		Assert.assertEquals(signupPage.getEmailIdPlaceholder_text(), placeholder, "Placeholder mismatch");
+		LoggerFactory.getLogger().info("Email input field is visible with placeholder '{}'.", placeholder);
+	}
+
+	@Then("Password input field with masked entry should be visible")
+	public void password_input_field_with_masked_entry_should_be_visible() {
+		LoggerFactory.getLogger().info("Verifying Password input field visibility and masking...");
+		Assert.assertTrue(signupPage.isPasswordDisplayed(), "Password field is not visible");
+		Assert.assertTrue(signupPage.isPasswordMasked(), "Password field is not masked");
+		LoggerFactory.getLogger().info("Password field is visible and masked correctly.");
+	}
+
+	@Then("Confirm password input field with masked entry should be visible")
+	public void confirm_password_input_field_with_masked_entry_should_be_visible() {
+		LoggerFactory.getLogger().info("Verifying Confirm Password input field visibility and masking...");
+		Assert.assertTrue(signupPage.isConfirmPasswordDisplayed(), "Confirm Password field is not visible");
+		Assert.assertTrue(signupPage.isConfirmPasswordMasked(), "Confirm Password field is not masked");
+		LoggerFactory.getLogger().info("Confirm Password field is visible and masked correctly.");
+	}
+
+	@Then("Login button should be visible, enabled")
+	public void login_button_should_be_visible_enabled() {
+		LoggerFactory.getLogger().info("Verifying Login button visibility and enablement...");
+		Assert.assertTrue(signupPage.isLoginButtonEnabled(), "Login Button not enabled");
+		LoggerFactory.getLogger().info("Login button is visible and enabled.");
+	}
+
+	@Then("Sign Up link should be visible and navigates to the Sign-Up page")
+	public void signuplinkshouldbevisibleandnavigatestothesignuppage() {
+
+	}
+
+	@Then("\"Login\" link should be visible and navigates to the Login page")
+	public void login_link_should_be_visible_and_navigates_to_the_login_page() {
+		LoggerFactory.getLogger().info("Checking if Login link is visible...");
+		Assert.assertTrue(signupPage.isLoginLinkVisible(), "Login link is not visible on the page");
+		LoggerFactory.getLogger().info("Clicking on Login link...");
+		signupPage.clickLoginLink();
+		Assert.assertTrue(signupPage.isOnLoginPage(), "Navigation failed — user did not reach the Login page");
+		LoggerFactory.getLogger().info("User successfully navigated to the Login page.");
+	}
+
+	@Then("There should be exactly {int} input field")
+	public void there_should_be_exactly_input_field(Integer expectedCount) {
+		LoggerFactory.getLogger().info("Verifying total number of input fields expected: {}", expectedCount);
+		Assert.assertTrue(signupPage.verifyingInputFields(), "Input fields count mismatch.");
+		LoggerFactory.getLogger().info("Correct number of input fields are displayed.");
+	}
+
+	@Then("Radio button for show passwords is present")
+	public void radio_button_for_show_passwords_is_present() {
+		LoggerFactory.getLogger().info("Verifying presence of Show Password radio button...");
+		Assert.assertTrue(signupPage.verifyShowPasswordRadioButton(), "Show Password Radio Button not present");
+		LoggerFactory.getLogger().info("Show Password radio button is present.");
+	}
+
+	@Then("Terms and conditions details should be present")
+	public void terms_and_conditions_details_should_be_present() {
+		LoggerFactory.getLogger().info("Verifying presence of Terms and Conditions details...");
+		Assert.assertTrue(signupPage.verifyTermsAndConditionsPresent(), "Terms and Conditions not present");
+		LoggerFactory.getLogger().info("Terms and Conditions details are displayed correctly.");
+	}
+
+	@Then("Radio button for Terms and condition is present")
+	public void radio_button_for_terms_and_condition_is_present() {
+		LoggerFactory.getLogger().info("Verifying presence of Terms and Conditions acceptance radio button...");
+		Assert.assertTrue(signupPage.verifyTermsandConditionRadioButton(),
+				"Terms and Conditions radio button not present");
+		LoggerFactory.getLogger().info("Terms and Conditions radio button is present.");
+	}
+
+}

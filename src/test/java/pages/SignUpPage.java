@@ -10,9 +10,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SignUpPage {
+public class SignUpPage extends BasePage {
 	WebDriver driver;
-	
+
 	@FindBy(xpath = "//input[@type='email' and @name='username']")
 	public WebElement txtEmail;
 
@@ -34,7 +34,7 @@ public class SignUpPage {
 	@FindBy(xpath = "//div[.//text()[contains(.,'Terms')]]//button[@role='checkbox']")
 	public WebElement btnRadioAgree;
 
-	@FindBy(xpath = "//p[@id=':rh:-form-item-message']")
+	@FindBy(xpath = "//*[contains(text(),'Terms') and contains(text(),'Conditions')]")
 	public WebElement txtTermsAndConditions;
 
 	@FindBy(xpath = "//button[normalize-space()='Register']")
@@ -43,27 +43,20 @@ public class SignUpPage {
 	@FindBy(xpath = "//button[normalize-space()='Log in']")
 	public WebElement lnkLogin;
 
-	@FindBy(xpath = "//p[text()='Invalid email address']")
-	public WebElement errInvalidEmail;
-
-	@FindBy(xpath = "//p[contains(@class,'text-destructive') and contains(text(),'confirm your password')]")
-	public WebElement errCfmPwd;
-
-	@FindBy(xpath = "//p[@class='text-sm font-medium text-destructive' and normalize-space()='Password must be at least 6 characters']")
-	public WebElement errPwdLgth;
-
-	@FindBy(xpath = "//p[@class='text-sm font-medium text-destructive' and normalize-space()='You must accept the Terms & Conditions and Privacy Policy' ]")
-	public WebElement errTerms;
-
 	@FindBy(xpath = "//*[contains(@class,'destructive') or contains(@role,'alert')]")
 	private List<WebElement> errorMessages;
 
-	@FindBy(xpath = "//button[@id='radix-:r0:-trigger-login']")
+	@FindBy(xpath = "//button[contains(text(), 'Login')]")
 	public WebElement tabLogin;
 
+	@FindBy(xpath = "//input[(@type='email' or @type='password')]")
+	public List<WebElement> inputFields;
+
 	public SignUpPage(WebDriver indriver) {
-		this.driver = indriver;
-		PageFactory.initElements(indriver, this);
+		////this.driver = indriver;
+		//PageFactory.initElements(indriver, this);
+		
+		super(indriver);
 	}
 
 	public void enterEmail(String email) {
@@ -80,11 +73,6 @@ public class SignUpPage {
 
 	public void clickRegisterBtn() {
 		btnRegister.click();
-	}
-
-	public void getBrowserValidationMessage() {
-		WebElement activeElement = driver.switchTo().activeElement();
-		activeElement.getAttribute("validationMessage");
 	}
 
 	public void registerUserwithoutclickingTerms() {
@@ -123,4 +111,73 @@ public class SignUpPage {
 		}
 		return inputField;
 	}
+
+	public boolean isEmailIdDisplayed() {
+		return txtEmail.isDisplayed();
+	}
+
+	public String getEmailIdPlaceholder_text() {
+		String placeholder = txtEmail.getDomAttribute("placeholder");
+		return placeholder;
+	}
+
+	public boolean isPasswordDisplayed() {
+		return txtPassword.isDisplayed();
+	}
+
+	public boolean isPasswordMasked() {
+		String type = txtPassword.getDomAttribute("type");
+		return type.equalsIgnoreCase("password");
+	}
+
+	public boolean isConfirmPasswordDisplayed() {
+		return txtCfmPassword.isDisplayed();
+	}
+
+	public boolean isConfirmPasswordMasked() {
+		String type = txtCfmPassword.getDomAttribute("type");
+		return type.equalsIgnoreCase("password");
+	}
+
+	public boolean isLoginButtonEnabled() {
+		return tabLogin.isEnabled();
+	}
+
+	public boolean isLoginLinkVisible() {
+		return lnkLogin.isDisplayed();
+	}
+
+	public void clickLoginLink() {
+		lnkLogin.click();
+	}
+
+	public boolean isOnLoginPage() {
+		String title = driver.getTitle();
+		return title != null && title.toLowerCase().contains("login");
+	}
+
+	// ========================= Layout Checks ========================= //
+
+	public boolean verifyingInputFields() {
+		List<WebElement> fields = inputFields;
+		return fields.size() == 3;
+	}
+
+	public boolean verifyShowPasswordRadioButton() {
+		WebElement showPwd = btnRadioShowPwd;
+		boolean result = showPwd.isDisplayed();
+		return result;
+	}
+
+	public boolean verifyTermsAndConditionsPresent() {
+		boolean visible = txtTermsAndConditions.isDisplayed();
+		return visible;
+	}
+
+	public boolean verifyTermsandConditionRadioButton() {
+		WebElement termsRadio = btnRadioAgree;
+		boolean result = termsRadio.isDisplayed();
+		return result;
+	}
+
 }

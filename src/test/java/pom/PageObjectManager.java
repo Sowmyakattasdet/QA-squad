@@ -6,18 +6,19 @@ import pages.ActivityInsightsMenuPage;
 import pages.EditYourProfileBodyMetricsPage;
 import pages.EditYourProfileFunctionalTestingPage;
 import pages.EditYourProfilePageBasicInfo;
-import pages.LaunchPageShiva;
+import pages.LaunchPage;
+import pages.SignUpPage;
 
 
 public class PageObjectManager {
 
 	private WebDriver driver;
-	private LaunchPageShiva launchPage;
+	private LaunchPage launchPage;
 	private ActivityInsightsMenuPage activityInsightsMenuPage;
 	private  EditYourProfilePageBasicInfo editYourProfilePageBasicInfo;
 	private EditYourProfileFunctionalTestingPage editYourProfileFunctionalTestingPage;
 	private EditYourProfileBodyMetricsPage editYourProfileBodyMetricsPage;
-
+	private SignUpPage signUpPage;
 
 	public PageObjectManager(WebDriver driver) {
 		// driverFactory = new DriverFactory();
@@ -26,10 +27,10 @@ public class PageObjectManager {
 
 	}
 
-	public LaunchPageShiva getLaunchPage() {
+	public LaunchPage getLaunchPage() {
 
 		if (launchPage == null) {
-			launchPage = new LaunchPageShiva(driver);
+			launchPage = new LaunchPage(driver);
 		}
 		return launchPage;
 
@@ -66,5 +67,12 @@ public class PageObjectManager {
 		return editYourProfileFunctionalTestingPage;
 		
 	}
-	
+		public SignUpPage getSignUpPage() {
+
+		if (signUpPage == null) {
+			signUpPage = new SignUpPage(driver);
+		}
+		return signUpPage;
+
+	}
 }

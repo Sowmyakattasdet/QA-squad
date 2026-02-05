@@ -10,9 +10,9 @@ import org.openqa.selenium.support.PageFactory;
 import utils.ConfigReader;
 import utils.LoggerFactory;
 
-public class LaunchPage {
+public class LaunchPage extends BasePage {
 
-    WebDriver driver;
+   // WebDriver driver;
 
     @FindBy(xpath = "//span[normalize-space()='Menstrual']")
     public WebElement txtCycleMenstrualPhase;
@@ -50,10 +50,11 @@ public class LaunchPage {
     @FindBy(xpath = "//button[normalize-space()='Start Your Personalized Journey']")
     public WebElement BtnStartPersonJny;
 
-    public LaunchPage(WebDriver indriver) {
-        LoggerFactory.getLogger().info("Incoming Driver:{}", indriver);
-        this.driver = indriver;
-        PageFactory.initElements(indriver, this);
+    public LaunchPage(WebDriver driver) {
+       // LoggerFactory.getLogger().info("Incoming Driver:{}", indriver);
+       // this.driver = indriver;
+        super(driver);
+       
     }
 
     public void clickLoginButton() {
