@@ -1,5 +1,5 @@
 @dashboardpage
-Feature: Testing dashboardpage in Herbalance
+Feature: Free Plan Dashboard - UI verfication
   
   Background: User is in login page
     Given User is on the HerBalance auth page
@@ -110,6 +110,70 @@ Feature: Testing dashboardpage in Herbalance
      @freeplanNote
   Scenario: Free plan note
     Then Message “Free plan includes 7 days of limited tracking” should be displayed clearly below the slider
+    
+   
+     @automatic_datamaping
+     Scenario: Automatic data mapping from onboarding
+    Then Displayed condition(s) match exactly what was selected during onboarding, without requiring user input again 
+   
+       
+    @conditiondiscription
+     Scenario: Condition description message
+    Then Message appears below condition card explaining how the plan is adjusted
+    
+     @Styling
+     Scenario: Styling and icon display
+    Then Card includes heart icon, condition name , and info icon with related text
+    
+    
+     @nohealthissue
+     Scenario: No condition scenario
+    Then Message like “No health conditions selected” or an empty state is displayed
+    
+    @nobloodrep
+     Scenario: Display Blood Report Insights based on report uploaded
+    Then Blood Report Insights section should display the personalized values and insights
+    
+     @Bloodrepbtn
+     Scenario: Display Blood Report Insights based on report not uploaded
+     Then User should see the "Upload Blood Report" button
+     
+     @Messagebloodre
+     Scenario: Message for Blood report
+     Then Message prompting them to upload their medical blood test report
+     
+      @uploadrb
+     Scenario: Upload report button 
+     Then "Upload Blood Report" button should be enabled
+     
+     @joineddate
+     Scenario: Presence of start / joined date of subcription 
+     Then Joined date should be displayed
+    
+       @todaydate
+     Scenario: Presence of todays date section 
+     Then Todays date should be display
+     
+       @subplan
+     Scenario: Plan details is displayed 
+     Then Subcription plan should be displayed
+     
+        @remdays
+     Scenario: Status of the plan 
+     Then Status of plan should be displayed(how many days left out of 7 days free plan)
+     
+        @upgrade
+     Scenario: Presence of Upgrade to Premium button
+     Then "Upgrade to Premium" button should be displayed
+     
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
