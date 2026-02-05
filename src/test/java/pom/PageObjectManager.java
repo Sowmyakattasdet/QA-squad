@@ -4,16 +4,16 @@ import org.openqa.selenium.WebDriver;
 
 import pages.ActivityInsightsMenuPage;
 import pages.LaunchPageShiva;
-import pages.LoginPage;
 
 public class PageObjectManager {
 
 	private WebDriver driver;
 	private LaunchPageShiva launchPage;
-	private LoginPage loginPage;
 	private ActivityInsightsMenuPage activityInsightsMenuPage;
 
 	public PageObjectManager(WebDriver driver) {
+		// driverFactory = new DriverFactory();
+		// driver = driverFactory.getDriver();
 		this.driver = driver;
 
 	}
@@ -26,12 +26,7 @@ public class PageObjectManager {
 		return launchPage;
 
 	}
- public LoginPage getLoginPage() {
-	 if(loginPage == null) {
-		 loginPage = new LoginPage(driver);
-	 }
-	 return loginPage;
- }
+
 	public ActivityInsightsMenuPage geActivityInsightsMenuPage() {
 
 		if (activityInsightsMenuPage == null) {
