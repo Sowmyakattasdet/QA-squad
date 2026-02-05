@@ -2,14 +2,11 @@ package pages;
 
 import java.time.Duration;
 import java.util.List;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import utils.ConfigReader;
 
 public class DashboardPage extends BasePage {
@@ -25,160 +22,222 @@ public class DashboardPage extends BasePage {
 	private WebElement loginButton;
 
 	@FindBy(xpath = "//*[text()='Free Plan Dashboard']")
-	WebElement title_freeplan;
+	private WebElement title_freeplan;
 	
 	@FindBy(xpath = "//*[@stroke-linecap=\"round\"]")
-	WebElement profileicon;
+	private	WebElement profileicon;
 	
 	@FindBy(xpath = "//*[text()='qa squad']")
-	WebElement profilename;
+	private	WebElement profilename;
 
 	@FindBy(xpath = "//*[@class='lucide lucide-bell h-5 w-5 text-[#6A5ACD]']")
-	WebElement bellicon;
+	private	WebElement bellicon;
 
 	@FindBy(xpath ="//*[@placeholder='Search...']")
-	WebElement searchbar;
+	private	WebElement searchbar;
 	
 	@FindBy(xpath ="//*[text()='Activity Insights']")
-	WebElement activityinsight;
+	private	WebElement activityinsight;
 	
 	@FindBy(xpath ="//*[text()='Diet Plan']")
-	WebElement dietplan;
+	private	WebElement dietplan;
 	
 	@FindBy(xpath ="//*[text()='Workout']")
-	WebElement workout;
+	private	WebElement workout;
 	
 	@FindBy(xpath ="//*[text()='Water Tracker']")
-	WebElement watertracker;
+	private	WebElement watertracker;
 	
 	@FindBy(xpath ="//*[text()='View Full Cycle Details']")
-	WebElement fullcycle;
+	private	WebElement fullcycle;
 	
 	@FindBy(xpath ="//*[text()='Upload Blood Report']")
-	WebElement uploadreport;
+	private	WebElement uploadreport;
 	
 	@FindBy(xpath ="//*[text()='Upgrade to Premium']")
-	WebElement upgradepremium;
+	private	WebElement upgradepremium;
 	
 	@FindBy(xpath ="//*[text()='Generate 7-Day Plan']")
-	WebElement sevendayplan;
+	private	WebElement sevendayplan;
 	
 	@FindBy(xpath ="//*[text()='See Premium Plans']")
-	WebElement premiumplan;
+	private	WebElement premiumplan;
 	
 	@FindBy(xpath ="//*[text()='Free Plan • Access to Basic Features']")
-	WebElement freeplanaccess;
+	private	WebElement freeplanaccess;
 	
 	@FindBy(xpath ="//p[contains(text(),'Enjoy')]")
-	WebElement enjoyfree;
+	private	WebElement enjoyfree;
 	
 	@FindBy(xpath ="//p[contains(text(),'Upload')]")
-	WebElement subtext;
+	private	WebElement subtext;
 	
 	@FindBy(xpath ="//*[text()='Weight & Body Metrics']")
-	WebElement weightheading;
+	private	WebElement weightheading;
 	
 	@FindBy(xpath ="//*[text()='Health Conditions']")
-	WebElement healthsection;
+	private	WebElement healthsection;
 	
 	@FindBy(xpath ="//*[text()='Blood Report Insights']")
-	WebElement bloodrepsection;
+	private	WebElement bloodrepsection;
 	
 	@FindBy(xpath ="//*[text()='Menstrual Cycle Insights']")
-	WebElement menstrualsection;
+	private	WebElement menstrualsection;
 	
 	@FindBy(xpath ="//*[text()='Subscription Information']")
-	WebElement subscriptionsection;
+	private	WebElement subscriptionsection;
 	
 	@FindBy(xpath ="//*[text()='Current']")
-	WebElement weight;
+	private	WebElement weight;
 	
 	@FindBy(xpath ="//*[text()='Height']")
-	WebElement height;
+	private	WebElement height;
 	
 	@FindBy(xpath ="//*[text()='BMI']")
-	WebElement bmi;
+	private	WebElement bmi;
 	
 	@FindBy(xpath ="//*[text()='Monthly Goal:']")
-	WebElement sevendayg;
+	private	WebElement sevendayg;
 
 	@FindBy(xpath ="//*[text()='Starting']")
-	WebElement starting;
+	private	WebElement starting;
 	
 	@FindBy(xpath ="//*[text()='Goal: ']")
-	WebElement goal;
+	private	WebElement goal;
 	
 	@FindBy(xpath ="//*[text()='BMI Reference Guide']")
-	WebElement bmireff;
+	private	WebElement bmireff;
 	
 	@FindBy(xpath ="//*[text()='Monthly Goal:']")
-	WebElement weeklygoal;
+	private	WebElement weeklygoal;
 	
 	@FindBy(xpath ="//*[text()='Daily Weigh-in:']")
-	WebElement dailyweight;
+	private	WebElement dailyweight;
 	
 	@FindBy(xpath ="//*[@class='text-lg font-semibold text-green-600']")
-	WebElement weightval;
+	private	WebElement weightval;
 	
 	@FindBy(xpath ="//span[text()='Starting']//parent::div/parent::div//p[contains(@class,'font-semibold')]")
-	WebElement onbweight;
+	private	WebElement onbweight;
 	
 	@FindBy(xpath ="//*[@class=\"text-[#6A5ACD] group-hover:text-[#9370DB] font-medium\"]")
-	WebElement userhover;
+	private	WebElement userhover;
 	
 	@FindBy(xpath ="//*[text()='Body Metrics']")
-	WebElement bodymetrics;
+	private	WebElement bodymetrics;
 	
 	
 	@FindBy(xpath ="//*[text()='Edit Profile']")
-	WebElement editprofile;
+	private	WebElement editprofile;
 	//*[text()='Edit Profile']
 	
 	@FindBy(xpath ="//*[text()='cm']/..")
-	WebElement heightval;
+	private	WebElement heightval;
 	
 	@FindBy(xpath ="//*[text()='BMI']/../..//p[1]")
-	WebElement BMIval;
+	private	WebElement BMIval;
 	
 	@FindBy(xpath ="//*[@name='weight']")
-	WebElement wtfromedit;
+	private	WebElement wtfromedit;
 	
 	@FindBy(xpath ="//*[@name=\"height\"]")
-	WebElement htfromedit;
+	private	WebElement htfromedit;
 	
 	
 	@FindBy(xpath ="//button")
-	List<WebElement> menus;
+	private	List<WebElement> menus;
 	
 	@FindBy(xpath ="//h3/div/span")
-	List<WebElement> section;
+	private	List<WebElement> section;
 	
 	@FindBy(xpath ="//*[text()='Monthly Weight Goal (4% of body weight)']")
-	WebElement weeklygoalt;
+	private	WebElement weeklygoalt;
 	
 	@FindBy(xpath ="//*[text()='Morning, before food']")
-	WebElement dailyweigh;
+	private	WebElement dailyweigh;
 	
 
 	@FindBy(xpath ="//*[contains(text(),'personalized re')]")
-	WebElement freep;
+	private	WebElement freep;
 	
 	@FindBy(xpath ="//*[@class='relative h-8 rounded-md mb-2']")
-	WebElement bmisl;
+	private	WebElement bmisl;
 	
 	@FindBy(xpath ="//*[@class='w-3 h-3 bg-black rounded-full']")
-	WebElement gradiant;
+	private	WebElement gradiant;
 	
 	@FindBy(xpath ="//*[text()='Info']")
-	WebElement info;
+	private	WebElement info;
 	
 	@FindBy(xpath ="//*[text()='Free plan includes 7 days of limited tracking']")
-	WebElement fp;
-	//*[text()='Free plan includes 7 days of limited tracking']
+	private	WebElement fp;
+	
+	@FindBy(xpath ="//*[text()='Digestive Issues (IBS, Leaky Gut, etc.)']")
+	private	WebElement healthissue;   
+	
+	@FindBy(xpath ="//*[@data-testid='button-edit-health-conditions']")
+	private	WebElement edithealth;
+	
+	@FindBy(xpath ="//*[@data-testid='button-upload-blood-report']")
+	private	WebElement bloodrpbtn;
+	
+
+	@FindBy(xpath ="//*[contains(text(),'Your plan')]")
+	private	WebElement healthplan;
+	
+	@FindBy(xpath ="//*[contains(text(),'Sleep Apnea')]")
+	private	WebElement sleepapna;
+	
+	@FindBy(xpath ="//*[@class='lucide lucide-heart h-4 w-4']")
+	private	WebElement heart;
+	
+	@FindBy(xpath ="//*[text()='Health Conditions']")
+	private	WebElement heartcond;
+	
+	@FindBy(xpath ="//*[text()='No Health Issues']")
+	private	WebElement noissue;
+	
+	
+	@FindBy(xpath ="//*[@class=\"lucide lucide-circle-alert h-4 w-4 text-[#6A5ACD] flex-shrink-0 mt-0.5\"]")
+	private	WebElement healthed;
+	
+	@FindBy(xpath ="//*[@id='condition-sleep_apnea']")
+	private	WebElement selectsleep;
+	
+	@FindBy(xpath ="//*[@data-testid='checkbox-condition-digestive_issues']")
+	private	WebElement selectdigist;
+	
+	@FindBy(xpath ="//*[@data-testid='button-save-health-conditions']")
+	private	WebElement selectsavehealth;
+	
+	@FindBy(xpath ="//*[contains(@class,\"text-base font-medium text-g\")]")
+	private	WebElement uploaddynamic;
+	
+	@FindBy(xpath ="//*[@data-testid='button-upload-blood-report']")
+	private	WebElement uploadbn;
+	
+	@FindBy(xpath ="//*[@class=\"text-sm text-gray-500 mb-6 max-w-sm\"]")
+	private	WebElement reporttxt;
+	
+	@FindBy(xpath ="//*[text()='Joined Date']")
+	private	WebElement joind;
+	
+	@FindBy(xpath ="//*[text()=\"Today's Date\"]")
+	private	WebElement todatd;
+	
+	@FindBy(xpath ="//*[@class=\"font-medium text-sm\"]")
+	private	WebElement subplan;
+	
+	@FindBy(xpath ="//*[contains(@class,\"text-xs text-w\")]")
+	private	WebElement rmd;
+	
+	@FindBy(xpath ="//*[text()='Upgrade to Premium']")
+	private	WebElement upgradebtn;
 	
 	public DashboardPage(WebDriver driver) {
 		super(driver);
-
+		
+		
 	}
 
 	public void Login()  {
@@ -196,27 +255,22 @@ public class DashboardPage extends BasePage {
 	
 		
 	public String Dashboardtitletext(){
-			//	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
 				wait.until(ExpectedConditions.visibilityOf(title_freeplan));
 				return title_freeplan.getText();
 				}
 		
 	public boolean profile_name(){
-		//WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
 		return wait.until(ExpectedConditions.visibilityOf(profilename)).isDisplayed();
 		}
 
 	public boolean profileicondisplay(){
-		//WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
 		return wait.until(ExpectedConditions.visibilityOf(profileicon)).isDisplayed();
 		}
 	
 	public boolean bellicondisplay(){
-		//WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
 		return wait.until(ExpectedConditions.visibilityOf(bellicon)).isDisplayed();
 		}
 	public boolean searchbardisplay(){
-		//WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
 		return wait.until(ExpectedConditions.visibilityOf(searchbar)).isDisplayed();
 		}
 	public int countmenus(){
@@ -225,22 +279,18 @@ public class DashboardPage extends BasePage {
 		}
 	
 	public String activityinsighttxt(){
-		//	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.visibilityOf(activityinsight));
 			return activityinsight.getText();
 			}
 	public String dietplantxt(){
-		//	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.visibilityOf(dietplan));
 			return dietplan.getText();
 			}
 	public String workouttxt(){
-		//	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.visibilityOf(workout));
 			return workout.getText();
 			}
 	public String watertrackertxt(){
-		//	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.visibilityOf(watertracker));
 			return watertracker.getText();
 			}
@@ -403,10 +453,73 @@ public class DashboardPage extends BasePage {
 		String v="Free plan includes 7 days of limited tracking";
 			return v;
 			}
+	public String healthissuetext(){
+		wait.until(ExpectedConditions.visibilityOf(healthissue));
+			return healthissue.getText();
+			}
 	
-	
-	
-	
+	public String healthiss(){
+		String v="Digestive Issues (IBS, Leaky Gut, etc.)";
+			return v;
+			}
+	public boolean healthplantxt(){
+		return wait.until(ExpectedConditions.visibilityOf(healthplan)).isDisplayed();
+		}
+	public String sleepapneatext(){
+		wait.until(ExpectedConditions.visibilityOf(sleepapna));
+			return sleepapna.getText();
+			}
+	public boolean heartsym(){
+		return wait.until(ExpectedConditions.visibilityOf(heart)).isDisplayed();
+		}
+	public boolean heartcondisplayl(){
+		return wait.until(ExpectedConditions.visibilityOf(heartcond)).isDisplayed();
+		}
+	public boolean healthedit(){
+		return wait.until(ExpectedConditions.visibilityOf(healthed)).isDisplayed();
+		}
+	public boolean nohealthissue(){
+		wait.until(ExpectedConditions.visibilityOf(edithealth)).click();
+		selectsleep.click();
+		selectdigist.click();
+		selectsavehealth.click();
+		return wait.until(ExpectedConditions.visibilityOf(noissue)).isDisplayed();
+		}
+	public boolean uploadfiledyanamic(){
+		return wait.until(ExpectedConditions.visibilityOf(uploaddynamic)).isDisplayed();
+		}
+	public String uploadbutton(){
+		String text= wait.until(ExpectedConditions.visibilityOf(uploadbn)).getText();
+				return text ;
+		}
+	public boolean reporttex(){
+		return wait.until(ExpectedConditions.visibilityOf(reporttxt)).isDisplayed();
+				
+		}
+	public boolean btnenable(){
+		return wait.until(ExpectedConditions.visibilityOf(uploadbn)).isEnabled();
+				
+		}
+	public boolean joineddate(){
+		return wait.until(ExpectedConditions.visibilityOf(joind)).isDisplayed();
+				
+		}
+	public boolean todaydate(){
+		return wait.until(ExpectedConditions.visibilityOf(todatd)).isDisplayed();
+				
+		}
+	public boolean subscriptionplan(){
+		return wait.until(ExpectedConditions.visibilityOf(subplan)).isDisplayed();
+				
+		}
+	public boolean subsplanrem(){
+		return wait.until(ExpectedConditions.visibilityOf(rmd)).isDisplayed();
+				
+		}
+	public boolean premiumbtn(){
+		return wait.until(ExpectedConditions.visibilityOf(upgradebtn)).isDisplayed();
+				
+		}
 	
 		}
 	
