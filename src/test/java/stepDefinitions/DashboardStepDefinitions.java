@@ -162,8 +162,9 @@ public void app_should_have_weight(String expout, String expout2, String expout3
 
 @Then("Should display the user’s weight as entered during the onboarding process.")
 public void should_display_the_user_s_weight_as_entered_during_the_onboarding_process() {
-	 String actout=pom.getDashboardPage().onbweighttxt();
-	  
+	 Double actout=pom.getDashboardPage().weightvaltxt();
+	 Double expout=pom.getDashboardPage().weightvaltxt();
+	 Assert.assertEquals(actout, expout,"weight is not matching");
 }
 
 
