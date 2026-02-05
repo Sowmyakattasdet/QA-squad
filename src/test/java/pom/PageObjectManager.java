@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import pages.ActivityInsightsMenuPage;
 import pages.LaunchPage;
-import pages.LaunchPageShiva;
+
 import pages.SignUpPage;
 
 public class PageObjectManager {
