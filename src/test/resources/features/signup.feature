@@ -1,5 +1,5 @@
 @SignUp
-@Regression
+@Run
 Feature: Sign Up page functionality
   Background:
     Given User clicked Sign up button in home page
