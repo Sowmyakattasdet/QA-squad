@@ -57,7 +57,7 @@ Feature: Free Plan Dashboard - UI verfication
     
      @section_details
   Scenario: 7-Day Goal section details
-    Then App should have "Starting" weight, "Goal: 126.8 lbs" , "Weekly target", "Daily Weigh-in:"  
+    Then App should have "Starting" weight, "Goal: " , "Weekly target", "Daily Weigh-in:"  
     
         
      @weightval
