@@ -13,28 +13,28 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class EditYourProfilePageBasicInfo extends BasePage {
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	 @FindBy(css = ".lucide.lucide-user.h-5.w-5.text-white")
-	 public WebElement profileBtn;
+	 private WebElement profileBtn;
 	
 	 @FindBy(xpath = "//div[contains(text(),'Edit Profile')]") 
-	 public WebElement editProfileBtn;
+	 private WebElement editProfileBtn;
 	
 	 @FindBy(xpath = "//h1[@class='text-2xl font-semibold text-[#6A5ACD] mt-2']")
-	 public WebElement editProfileLabel;
+	 private WebElement editProfileLabel;
 	 
 	 @FindBy(xpath = "//h3[normalize-space()='Basic Information']")
-	 public WebElement basicinfoLbl;
+	 private WebElement basicinfoLbl;
 	 
 	 @FindBy(xpath = "//p[@class='text-sm text-muted-foreground']")
-	 public WebElement updatePersonalInfoLbl;
+	 private WebElement updatePersonalInfoLbl;
 	 
 	 @FindBy(xpath = "//input[@id='name']")
-	 public WebElement userNameTxtBxInput;
+	 private WebElement userNameTxtBxInput;
 	 @FindBy(xpath = "//button[normalize-space()='Next: Body Metrics']")
-	 public WebElement metricsButton;
+	 private WebElement metricsButton;
 	 @FindBy(xpath = "//input[@id='age']")
-	 public WebElement updateAgeTxtBxInput;
+	 private WebElement updateAgeTxtBxInput;
 	 
-	public EditYourProfilePageBasicInfo(WebDriver driver) {
+	 public EditYourProfilePageBasicInfo(WebDriver driver) {
 		super(driver);
 
 	}
@@ -48,8 +48,8 @@ public class EditYourProfilePageBasicInfo extends BasePage {
 		editProfileLabel.isDisplayed();
 	}
 	
-	public void updateInfoLblDisplayed() {
-		updatePersonalInfoLbl.isDisplayed();
+	public boolean updateInfoLblDisplayed() {
+		return updatePersonalInfoLbl.isDisplayed();
 	}
 	
 	public String getUserNameTxtBoxgetValue() {
@@ -60,9 +60,13 @@ public class EditYourProfilePageBasicInfo extends BasePage {
 		return updateAgeTxtBxInput.getAttribute("value");
 	}
 	
-	public void metricsBtnEnabled() {
-		metricsButton.isEnabled();
+	public boolean metricsBtnEnabled() {
+		return metricsButton.isEnabled();
 	}
+	
+	public boolean basicInfoLabelDisplayed() {
+	return basicinfoLbl.isDisplayed();
+}
 }
 
 

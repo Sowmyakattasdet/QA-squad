@@ -18,13 +18,13 @@ public class EditProfileBasicInfoStepDefinitions {
 	
  @Then("{string} should be visible inside section on basic tab")
  public void should_be_visible_inside_section_on_basic_tab(String string) {
-   Assert.assertTrue(pom.getEditYourProfilePageBasicInfo().basicinfoLbl.isDisplayed());
+   Assert.assertTrue(pom.getEditYourProfilePageBasicInfo().basicInfoLabelDisplayed());
     
  }
 
  @Then("{string} sub text should be visible on basic tab")
  public void sub_text_should_be_visible_on_basic_tab(String string) {
-	 Assert.assertTrue(pom.getEditYourProfilePageBasicInfo().updatePersonalInfoLbl.isDisplayed());
+	 Assert.assertTrue(pom.getEditYourProfilePageBasicInfo().updateInfoLblDisplayed());
 
  }
 
@@ -46,7 +46,7 @@ public class EditProfileBasicInfoStepDefinitions {
 	
  @Then("“Next: Body Metrics” button should be visible, enabled")
 	public void next_body_metrics_button_should_be_visible_enabled() {
-	   Assert.assertTrue(pom.getEditYourProfilePageBasicInfo().metricsButton.isEnabled());
+	   Assert.assertTrue(pom.getEditYourProfilePageBasicInfo().metricsBtnEnabled());
 	}
 }
 
