@@ -13,6 +13,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.qameta.allure.Allure;
 import pom.PageObjectManager;
+import utils.ConfigReader;
 import utils.LoggerFactory;
 
 public class Hooks {
@@ -30,7 +31,18 @@ public class Hooks {
 	public PageObjectManager getPom() {
 		return pom;
 	}
+	@Before("@requiresLogin")
+	public void loginBeforeScenario() {
 
+	    String email = ConfigReader.getProperty("app.username");
+	    String password = ConfigReader.getProperty("app.password");
+
+	    
+	    pom.getLoginPage().clickLoginButton();
+	    pom.getLoginPage().login(email, password);
+
+	   
+	}
 	@After
 	public void tearDown(Scenario scenario) {
 		if (DriverManager.getDriver() != null) {
