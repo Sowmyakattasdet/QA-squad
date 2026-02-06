@@ -107,10 +107,9 @@
             <version>1.14.0</version>
         </dependency>
         <dependency>
-		    <groupId>io.cucumber</groupId>
-		    <artifactId>cucumber-picocontainer</artifactId>
-		    <version>7.21.1</version>
-		</dependency>
-        
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-picocontainer</artifactId>
+    <version>7.21.1</version>
+</dependency>      
     </dependencies>
 </project>
