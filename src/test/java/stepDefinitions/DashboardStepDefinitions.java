@@ -23,13 +23,12 @@ public class DashboardStepDefinitions {
 	public void user_is_on_the_her_balance_auth_page()
 			throws InterruptedException {
 
-		pom.getSignUpPage().login();
-
 	}
 
 	@When("User clicks login in button after entering  a valid credential")
-	public void user_clicks_login_in_button_after_entering_a_valid_credential() {
-		pom.getDashboardPage().Login();
+	public void user_clicks_login_in_button_after_entering_a_valid_credential()
+			throws InterruptedException {
+		pom.getSignUpPage().login();
 
 	}
 
