@@ -9,7 +9,9 @@ import pages.EditYourProfileFunctionalTestingPage;
 import pages.EditYourProfilePageBasicInfo;
 import pages.LaunchPage;
 import pages.LoginPage;
+import pages.MenstrualPhaseLogs_Page;
 import pages.SignUpPage;
+import pages.UpdateCycle_Page;
 
 public class PageObjectManager {
 
@@ -22,6 +24,8 @@ public class PageObjectManager {
 	private EditYourProfileBodyMetricsPage editYourProfileBodyMetricsPage;
 	private LoginPage loginPage;
 	private DashboardPage dashboardpage;
+	private MenstrualPhaseLogs_Page menstrualPhaseLogPage;
+	private UpdateCycle_Page updateCyclePage;
 
 	public PageObjectManager(WebDriver driver) {
 		// driverFactory = new DriverFactory();
@@ -98,4 +102,21 @@ public class PageObjectManager {
 		return editYourProfileFunctionalTestingPage;
 
 	}
+
+	public MenstrualPhaseLogs_Page getMenstrualPhaseLogs_Page() {
+		if (menstrualPhaseLogPage == null) {
+			menstrualPhaseLogPage = new MenstrualPhaseLogs_Page(driver);
+		}
+		return menstrualPhaseLogPage;
+
+	}
+
+	public UpdateCycle_Page getUpdateCycle_Page() {
+		if (updateCyclePage == null) {
+			updateCyclePage = new UpdateCycle_Page(driver);
+		}
+		return updateCyclePage;
+
+	}
+
 }

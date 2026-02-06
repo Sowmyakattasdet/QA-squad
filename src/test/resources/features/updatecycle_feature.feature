@@ -4,9 +4,11 @@ Background: User clicks Update Cycle Information button
 Given User is on Update Cycle Information popup
 
 @UpdateCycleInformation 	
-Scenario: Enabled dates in the calendar can be selected			
+Scenario Outline: Enabled dates in the calendar can be selected			
 When User selects the date from the calendar 	
-Then The date selected should be highlighted	
+Then The date selected should be highlighted
+
+
 
 @up1
 Scenario: Previous month navigation in calendar			
