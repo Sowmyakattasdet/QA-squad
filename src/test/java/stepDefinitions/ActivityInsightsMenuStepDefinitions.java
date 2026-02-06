@@ -209,8 +209,6 @@ public class ActivityInsightsMenuStepDefinitions {
 		String actualNotelabel = pom.geActivityInsightsMenuPage()
 				.bmiNotetFieldLable();
 
-		System.out.print("labels are " + actualWeightlabel + actualAutoCalclabel
-				+ actualNotelabel);
 		Assert.assertTrue(actualWeightlabel.equals(Weight)
 				&& actualAutoCalclabel.equals(AutoCalculate)
 				&& actualNotelabel.equals(Note));
