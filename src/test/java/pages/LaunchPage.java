@@ -1,9 +1,14 @@
 package pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import utils.ConfigReader;
 import utils.LoggerFactory;
@@ -58,17 +63,25 @@ public class LaunchPage extends BasePage {
     public void clickLoginButton() {
         btnLgn.click();
     }
-
     public void clickSignUpButton() {
-        btnSignUp.click();
-    }
-
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebElement signup = wait
+				.until(ExpectedConditions.elementToBeClickable(btnSignUp));
+		signup.click();
+	}
+  
     public void clickGetStartedButton() {
-        BtnGetStarted.click();
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		WebElement getStarted = wait.until(ExpectedConditions
+				.elementToBeClickable(BtnGetStarted));
+		getStarted.click();
     }
 
     public void clickStartYourPersonalizedJourneyButton() {
-        BtnStartPersonJny.click();
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebElement startper = wait.until(ExpectedConditions
+				.elementToBeClickable(BtnStartPersonJny));
+		startper.click();
     }
 
     public String getLaunchPageURL() {
@@ -78,4 +91,60 @@ public class LaunchPage extends BasePage {
     public void launchApplication() {
 		driver.get(ConfigReader.getProperty("appURL"));
 	}
+    public boolean displayCards() {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement element = wait
+				.until(ExpectedConditions.visibilityOf(txtCycleMenstrualPhase));
+		if (element.isDisplayed() && txtCycleMenstrualPhase.isDisplayed()
+				&& txtCycleFollicularPhase.isDisplayed()
+				&& txtCycleOvulationPhase.isDisplayed()
+				&& txtCycleLutealPhase.isDisplayed())
+			;
+		{
+			return true;
+		}
+    }
+    public boolean detailscycletrackingapp()
+    {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		WebElement cycleTracking = wait.until(ExpectedConditions
+				.visibilityOf(txtCycleTracking));
+		cycleTracking.isDisplayed();
+		return true;
+    }
+    public boolean imagesinsync()
+    {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		WebElement imagedisplay = wait.until(ExpectedConditions
+				.visibilityOf(imgWgtLoss));
+		imagedisplay.isDisplayed();
+		return true;
+    }
+    public boolean getstartednow()
+    {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		WebElement getstdbtn = wait.until(ExpectedConditions
+				.visibilityOf(BtnGetStarted));
+		getstdbtn.isDisplayed();
+		return true;
+    }
+    public boolean startyourpersonalized()
+    {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		WebElement persjnybtn = wait.until(ExpectedConditions
+				.visibilityOf(BtnStartPersonJny));
+		persjnybtn.isDisplayed();
+		return true;
+    }
+    public boolean navigatingtoauthreg()
+    {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		wait.until(ExpectedConditions.urlContains("auth?tab=register"));
+		String currentUrl = driver.getCurrentUrl();
+		Assert.assertTrue(currentUrl.contains("auth?tab=register"),
+				"User is not on signup page" + currentUrl);
+		return true;
+    }
+    
 }
