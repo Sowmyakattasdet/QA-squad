@@ -21,7 +21,7 @@ public class ActivityInsightsMenuStepDefinitions {
 	public void user_is_on_the_her_balance_dashboard_with_the_activity_insights_submenu_expanded()
 			throws InterruptedException {
 
-		pom.geActivityInsightsMenuPage().Login();
+		pom.getSignUpPage().login();
 		pom.geActivityInsightsMenuPage().clickOnMenu();
 
 	}

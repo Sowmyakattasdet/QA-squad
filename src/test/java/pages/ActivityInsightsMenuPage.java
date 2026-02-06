@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import utils.LoggerFactory;
 import webElementActions.ElementActions;
 
 public class ActivityInsightsMenuPage extends BasePage {
@@ -202,20 +203,29 @@ public class ActivityInsightsMenuPage extends BasePage {
 	}
 
 	public String validateSubTitle() {
+		LoggerFactory.getLogger()
+				.info("Validate activity Insight page Sub Title");
 		return (elementActions.getText(subTitle));
 	}
 
 	public boolean validateBackToDashboard() {
+		LoggerFactory.getLogger()
+				.info("Validate activity Insight page Back to Dashboard");
 		return (elementActions.isElemnetDisplayed(backToDashboard));
 
 	}
 
 	public int validateThreeCards() {
+
+		LoggerFactory.getLogger()
+				.info("Validate activity Insight page Back Three Cards");
 		return (elementActions.getElementCount(threeCards));
 	}
 
 	public boolean validateStartingWeight() {
 
+		LoggerFactory.getLogger()
+				.info("Validate activity Insight page Start weight");
 		return (elementActions.isElemnetDisplayed(cardStartWeight));
 
 	}
@@ -235,6 +245,9 @@ public class ActivityInsightsMenuPage extends BasePage {
 	}
 
 	public String getCurrentWeightfromDashboard() {
+
+		LoggerFactory.getLogger()
+				.info("Validate activity Insight page-DB Current  weight");
 		String weightonDashboard = (elementActions
 				.getText(dashBoardCurrentWeight));
 		return changeValueToDecimal(weightonDashboard);
@@ -242,9 +255,15 @@ public class ActivityInsightsMenuPage extends BasePage {
 	}
 
 	public String getGoalWeightfromDashboard() {
+
+		LoggerFactory.getLogger()
+				.info("Validate activity Insight page-DB  Goal weight");
 		String weightonDashboard = (elementActions
 				.getText(dashBoardGoalWeight));
-		return changeValueToDecimal(weightonDashboard);
+
+		String weigtArray[] = weightonDashboard.split(":");
+
+		return (weigtArray[1].trim());
 
 	}
 
@@ -268,10 +287,15 @@ public class ActivityInsightsMenuPage extends BasePage {
 	}
 
 	public String getCurrentWeight() {
+		LoggerFactory.getLogger()
+				.info("Validate activity Insight page Current weight");
 		return (elementActions.getText(getCurrentWeight));
 	}
 
 	public String getGoalWeight() {
+		LoggerFactory.getLogger()
+				.info("Validate activity Insight page Goal weight");
+
 		return (elementActions.getText(getGoalWeight));
 
 	}
@@ -285,6 +309,9 @@ public class ActivityInsightsMenuPage extends BasePage {
 	}
 
 	public boolean getCompletionPercentage() {
+
+		LoggerFactory.getLogger()
+				.info("Validate activity Insight page Completion %");
 		String actualPercentage = (elementActions
 				.getText(weightLossPercentage));
 		String regex = "(100(\\.0+)?|[1-9]?\\d(\\.\\d+)?)% Complete";
@@ -296,6 +323,8 @@ public class ActivityInsightsMenuPage extends BasePage {
 	}
 
 	public boolean getWeightLost() {
+		LoggerFactory.getLogger()
+				.info("Validate activity Insight page Weight lost");
 		String weightLostvalue = (elementActions.getText(weightLost));
 		String regex = "-?\\d+(\\.\\d+)?\\skg";
 		return (weightLostvalue.matches(regex));
@@ -303,6 +332,8 @@ public class ActivityInsightsMenuPage extends BasePage {
 
 	public boolean getWeightRemaining() {
 
+		LoggerFactory.getLogger()
+				.info("Validate activity Insight page Remaining weight");
 		String weightRemaining = elementActions.getText(remainingWeight);
 		String regex = "-?\\d+(\\.\\d+)?\\skg";
 		return (weightRemaining.matches(regex));
@@ -313,6 +344,8 @@ public class ActivityInsightsMenuPage extends BasePage {
 	}
 
 	public boolean getxAxisLabel() {
+		LoggerFactory.getLogger()
+				.info("Validate activity Insight page XAxis label");
 		int labelcnt = elementActions.getElementCount(xAxislabel);
 		if (labelcnt == 7) {
 
@@ -333,16 +366,16 @@ public class ActivityInsightsMenuPage extends BasePage {
 	}
 
 	public String yaxisLabelValidation() {
+
+		LoggerFactory.getLogger()
+				.info("Validate activity Insight page YAxis label");
 		return (elementActions.getText(yAxisLabel));
 	}
 
 	public String validateReferenceline() {
 
-		// if (elementActions.isElemnetDisplayed(goalRefLine)) {
-		// return elementActions.getText(goalRefLinelabel);
-		// }
-		// return null;
-
+		LoggerFactory.getLogger()
+				.info("Validate activity Insight page Reference Line");
 		return elementActions.getText(goalRefLinelabel);
 
 	}
@@ -350,7 +383,7 @@ public class ActivityInsightsMenuPage extends BasePage {
 	public String validateLogTodayheader() {
 
 		if (elementActions.isElemnetDisplayed(logTodaysWeightLabel)) {
-			System.out.println(elementActions.getText(logTodaysWeightLabel));
+
 			return elementActions.getText(logTodaysWeightLabel);
 		}
 		return null;
@@ -380,9 +413,8 @@ public class ActivityInsightsMenuPage extends BasePage {
 	}
 
 	public boolean validatebmiAutoCalculate() {
-
-		System.out.println("value is"
-				+ elementActions.getAttribute(captureBMIField, "value"));
+		LoggerFactory.getLogger()
+				.info("Validate activity Insight page BMI auto Calculate");
 		if (elementActions.getAttribute(captureBMIField, "value")
 				.equalsIgnoreCase("")) {
 
@@ -409,6 +441,10 @@ public class ActivityInsightsMenuPage extends BasePage {
 
 	public void updateValidWeight(String userWeight)
 			throws InterruptedException {
+
+		LoggerFactory.getLogger()
+				.info("Validate activity Insight page Valid weight");
+
 		elementActions.sendKeys(enterWeightField, userWeight);
 		if (elementActions.isElementEnabled(weightLogButton)) {
 			elementActions.clickAction(weightLogButton);
@@ -427,6 +463,10 @@ public class ActivityInsightsMenuPage extends BasePage {
 	}
 
 	public void updateInvalidWeight(String userWeight) {
+
+		LoggerFactory.getLogger()
+				.info("Validate activity Insight page Invalid Weight");
+
 		elementActions.sendKeys(enterWeightField, userWeight);
 		if (elementActions.isElementEnabled(weightLogButton)) {
 			elementActions.clickAction(weightLogButton);
@@ -439,12 +479,14 @@ public class ActivityInsightsMenuPage extends BasePage {
 			elementActions.isElemnetDisplayed(alertWindow);
 			return elementActions.getText(alertMessage);
 		} catch (Exception e) {
-			System.out.println("Exception" + e);
+
 			return null;
 		}
 	}
 
 	public boolean validateGraphlinechart() throws InterruptedException {
+		LoggerFactory.getLogger()
+				.info("Validate activity Insight page LineGraph");
 
 		String graphDay = null;
 		String graphWeight = null;
@@ -455,10 +497,6 @@ public class ActivityInsightsMenuPage extends BasePage {
 			String[] logday = daylog.split("Day");
 			daylog = logday[logday.length - 1];
 
-			System.out.println("Day " + daylog);
-
-			System.out.println("weightenteredlog is " + weightlog);
-			System.out.println("weightenteredlog is " + daylog);
 			Thread.sleep(5000);
 			try {
 				elementActions.mouseOverAnElement(lineChartCircle);
@@ -485,13 +523,15 @@ public class ActivityInsightsMenuPage extends BasePage {
 	public boolean validateWeightProgressOvertime()
 			throws InterruptedException {
 
+		LoggerFactory.getLogger()
+				.info("Validate activity Insight page WeightProgressOvertime");
 		String graphDay = null;
 		String graphWeight = null;
 
 		if (elementActions.getElementCount(weightsfromWeightLog) > 0) {
 			String weightlog = weightsfromWeightLog.get(0).getText();
 			String daylog = weightsfromWeightLog.get(1).getText();
-			System.out.println("Day " + daylog);
+			// System.out.println("Day " + daylog);
 			String[] logday = daylog.split(" • ");
 
 			daylog = logday[logday.length - 1];

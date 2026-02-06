@@ -19,7 +19,8 @@ public class MenstrualPhaseLog_Stepdefnition {
 	@Given("User is on the Her Balance Dashboard with the Activity Insights submenu expanded")
 	public void user_is_on_the_her_balance_dashboard_with_the_activity_insights_submenu_expanded()
 			throws InterruptedException {
-		pom.geActivityInsightsMenuPage().Login();
+		pom.getSignUpPage().login();
+		// pom.geActivityInsightsMenuPage().Login();
 		// pom.geActivityInsightsMenuPage().clickOnMenu();
 		pom.getMenstrualPhaseLogs_Page().clickOnInsightsMenu();
 		Thread.sleep(2000);

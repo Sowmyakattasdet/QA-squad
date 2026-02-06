@@ -19,10 +19,12 @@ public class DashboardStepDefinitions {
 	}
 
 	@Given("User is on the HerBalance auth page")
-	public void user_is_on_the_her_balance_auth_page() {
+	public void user_is_on_the_her_balance_auth_page()
+			throws InterruptedException {
 
 		// pom.getDashboardPage().launchApplication();
-		pom.getLaunchPage().clickLoginButton();
+		// pom.getLaunchPage().clickLoginButton();
+		pom.getSignUpPage().login();
 
 	}
 

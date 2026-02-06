@@ -20,14 +20,15 @@ public class DriverManager {
 
 		String browserType = null;
 		BrowserOptions browserOptions = new BrowserOptions();
-		browserType = ConfigReader.getProperty("browser");
-
-		// browserType = driverbrowser.get();
-		//
-		// if (browserType == null) {
-		//
 		// browserType = ConfigReader.getProperty("browser");
-		// }
+
+		browserType = driverbrowser.get();
+
+		if (browserType == null) {
+
+			browserType = ConfigReader.getProperty("browser");
+			System.out.println("its null");
+		}
 
 		switch (browserType) {
 			case "chrome" :

@@ -1,3 +1,4 @@
+
 package stepDefinitions;
 
 import java.time.Duration;
@@ -70,6 +71,7 @@ public class SignUpStepDefinitions {
 		signupPage.enterPasswordConfirmation(testData.get("Confirm Password"));
 		signupPage.clickRegisterBtn();
 		LoggerFactory.getLogger().info("User entering the Valid data");
+
 	}
 
 	@Then("User should be redirected to the onboarding step")

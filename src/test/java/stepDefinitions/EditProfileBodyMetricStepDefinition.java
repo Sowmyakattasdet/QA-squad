@@ -19,8 +19,9 @@ public class EditProfileBodyMetricStepDefinition {
 	@Given("User is on the Her Balance Dashboard with the Edit Profile submenu expanded")
 	public void user_is_on_the_her_balance_dashboard_with_the_edit_profile_submenu_expanded()
 			throws InterruptedException {
-		pom.geActivityInsightsMenuPage().Login();
-		Thread.sleep(2000);
+		// pom.geActivityInsightsMenuPage().Login();
+		// Thread.sleep(2000);
+		pom.getSignUpPage().login();
 	}
 
 	@When("User click profile button to edit profile")
