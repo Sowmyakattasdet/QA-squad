@@ -1,3 +1,4 @@
+
 package pages;
 
 import java.time.Duration;
@@ -68,8 +69,6 @@ public class EditYourProfilePageBasicInfo extends BasePage {
 	return basicinfoLbl.isDisplayed();
 }
 }
-
-
 
 
 

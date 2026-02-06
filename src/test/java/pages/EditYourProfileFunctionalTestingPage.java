@@ -1,3 +1,4 @@
+
 package pages;
 
 import java.time.Duration;
@@ -131,3 +132,4 @@ public class EditYourProfileFunctionalTestingPage extends BasePage {
 
 	}
 }
+		
