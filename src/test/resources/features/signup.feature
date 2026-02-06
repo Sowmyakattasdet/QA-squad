@@ -66,7 +66,7 @@ Feature: Sign Up page functionality
 
   # invalid credentials
   Scenario Outline: User enters invalid registration data
-    Given User is on the HerBalance auth page
+    Given User is on the HerBalance auth page.
     When User clicks Register button after entering the data from given "<ScenarioName>"
     Then An error message should be displayed for "<ScenarioName>"
 

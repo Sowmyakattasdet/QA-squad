@@ -3,9 +3,12 @@ package webElementActions;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -120,4 +123,24 @@ public class ElementActions {
 		return element.isDisplayed();
 	}
 
+	public String getAlert() {
+
+		try {
+			Alert alert = driver.switchTo().alert();
+			String alertMsg = alert.getText();
+			alert.accept();
+			System.out.println("alert is" + alertMsg);
+			// logger.info("Error Message from alert " + alertMsg);
+			return (alertMsg);
+		} catch (NoAlertPresentException e) {
+			return null;
+		}
+
+	}
+
+	public void mouseOverAnElement(WebElement element) {
+		Actions actions = new Actions(driver);
+		actions.moveToElement(element).perform();
+
+	}
 }

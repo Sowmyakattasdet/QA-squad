@@ -1,4 +1,4 @@
-Feature: Weight Tracking UI Verification
+Feature: Weight Tracking UI Verification/Weight Tracking functional verification
 
 
 Background:
@@ -19,8 +19,7 @@ Scenario: 3 Cards for Weight info
 	
 Scenario: Card text is displayed correctly
 	Then Starting weight , Current weight and Goal weight card should be displayed
-	
-	
+
 Scenario: Labels and weight values are aligned
 	Then Label and weight values should be center-aligned
 	
@@ -81,4 +80,50 @@ Scenario: Log Weight button appears in default state
 	
 Scenario: Log Weight button enables after valid input
 	Then Log Weight button should be Enabled
+
+
+Scenario Outline: New tracking record appears after logging weight
+	When User clicks Log Weight button after entering valid value in <UserWeight>
+	Then Entered <UserWeight> should be added to the tracking record
+	
+	Examples:
+      | UserWeight     |
+      | "75.0"         |
+      |	"23.0"		   |
+      
+Scenario Outline: Invalid weight entries show error handling
+	When User enter value in <UserWeight> after clicking track weight in sub menu
+	Then Error message " Enter valid weight " should be displayed
+	
+
+	Examples:
+      | UserWeight      |
+      | "-23.0"         |        
+      | "-345"      	|
+     
+Scenario Outline: Graph updates after weight entry
+	When User clicks save button after entering valid <UserWeight> in weight
+	Then "Weight Progression Over Time" graph should plot the new value for that day
+	
+
+	Examples:
+      | UserWeight      |
+      | "43.0"         	|        
+      | "56.0"   		|
+      
+ Scenario Outline: Line chart reflects recent changes
+	When User clicks save button after entering valid <UserWeight> in weight
+	Then Line chart should reflect weight trend changes
+	
+
+	Examples:
+      | UserWeight      |
+      | "43.0"         	|        
+      | "56.0"   		|     
+      
+      
+      
+      
+
+
 

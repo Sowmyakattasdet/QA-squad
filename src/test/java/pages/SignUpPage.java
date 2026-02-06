@@ -6,7 +6,6 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -52,10 +51,22 @@ public class SignUpPage extends BasePage {
 	@FindBy(xpath = "//input[(@type='email' or @type='password')]")
 	public List<WebElement> inputFields;
 
+	@FindBy(name = ("username"))
+	private WebElement userName;
+
+	@FindBy(name = ("password"))
+	private WebElement password;
+
+	@FindBy(xpath = "//button[@type='submit' and text()='LogIn']")
+	private WebElement loginButton;
+
+	@FindBy(xpath = "//button[text()='Log In']")
+	private WebElement homePageloginButton;
+
 	public SignUpPage(WebDriver indriver) {
-		////this.driver = indriver;
-		//PageFactory.initElements(indriver, this);
-		
+		//// this.driver = indriver;
+		// PageFactory.initElements(indriver, this);
+
 		super(indriver);
 	}
 
@@ -90,7 +101,8 @@ public class SignUpPage extends BasePage {
 		return errorMessages.stream().map(e -> e.getText().trim()).toList();
 	}
 
-	public WebElement eyeIconAction(String passwordValue, String field, String action) {
+	public WebElement eyeIconAction(String passwordValue, String field,
+			String action) {
 		WebElement inputField;
 		WebElement eyeIcon;
 
@@ -178,6 +190,17 @@ public class SignUpPage extends BasePage {
 		WebElement termsRadio = btnRadioAgree;
 		boolean result = termsRadio.isDisplayed();
 		return result;
+	}
+
+	public void login() throws InterruptedException {
+		homePageloginButton.click();
+		userName.clear();
+		userName.sendKeys("qasquadteam3@gmail.com");
+		password.clear();
+		password.sendKeys("herbalance123");
+		loginButton.click();
+		Thread.sleep(3000);
+
 	}
 
 }
