@@ -9,11 +9,11 @@ When User clicks Edit Profile button
 
 Scenario: Weight input field presence
 When User clicks Body Metrics Tab
-Then Should display the user’s Weight as entered during the onboarding process.
+Then Should display the user’s Weight as entered during the onboarding process
 
 Scenario: Height input field presence
 When User clicks Body Metrics Tab
-Then Should display the user’s Height as entered during the onboarding process.
+Then Should display the user’s Height as entered during the onboarding process
 
 Scenario: BMI Category section is visible
 When User clicks Body Metrics Tab

@@ -12,12 +12,11 @@ import hooks.Hooks;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
 import pom.PageObjectManager;
 import utils.ConfigReader;
 
 public class LaunchStepDefinitions {
-	
+
 	private String appURL = null;
 	private WebDriver driver;
 	private PageObjectManager pom;
@@ -35,12 +34,12 @@ public class LaunchStepDefinitions {
 
 	@Given("User is on the browser")
 	public void user_is_on_the_browser() {
-		
+
 	}
 
 	@When("User enters app url")
 	public void user_enters_app_url() {
-		
+
 	}
 
 	@Then("Display cards for {string}, {string}, {string}, and {string}")
@@ -65,7 +64,7 @@ public class LaunchStepDefinitions {
 	}
 
 	@Then("Images in Sync' should be displayed")
-	public void images_in_sync_should_be_displayed() {		
+	public void images_in_sync_should_be_displayed() {
 		Assert.assertTrue(pom.getLaunchPage().imagesinsync());
 	}
 
@@ -80,7 +79,7 @@ public class LaunchStepDefinitions {
 	}
 
 	@Then("Display a {string} button in the footer section")
-	public void display_a_button_in_the_footer_section(String string) {		
+	public void display_a_button_in_the_footer_section(String string) {
 		Assert.assertTrue(pom.getLaunchPage().getstartednow());
 	}
 
@@ -107,16 +106,17 @@ public class LaunchStepDefinitions {
 	// login.click();
 	// }
 
-	@When("User clicks log in button")
+	@When("User clicks log in button.")
 	public void user_clicks_log_in_button() {
-	
+
 	}
 	@Then("User should be navigated to auth page login tab")
 	public void user_should_be_navigated_to_auth_page_login_tab() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		wait.until(ExpectedConditions.urlContains("auth"));
 		String currentUrl = driver.getCurrentUrl();
-		Assert.assertTrue(currentUrl.contains("auth"),"User is not on login page" + currentUrl);
+		Assert.assertTrue(currentUrl.contains("auth"),
+				"User is not on login page" + currentUrl);
 	}
 
 	@When("User clicks sign up button")

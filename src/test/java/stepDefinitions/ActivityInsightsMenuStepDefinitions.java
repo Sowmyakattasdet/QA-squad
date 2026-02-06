@@ -13,6 +13,7 @@ public class ActivityInsightsMenuStepDefinitions {
 	private PageObjectManager pom;
 
 	public ActivityInsightsMenuStepDefinitions(Hooks hooks) {
+
 		this.pom = hooks.getPom();
 	}
 
@@ -22,7 +23,6 @@ public class ActivityInsightsMenuStepDefinitions {
 
 		pom.geActivityInsightsMenuPage().Login();
 		pom.geActivityInsightsMenuPage().clickOnMenu();
-		Thread.sleep(2000);
 
 	}
 
@@ -248,6 +248,63 @@ public class ActivityInsightsMenuStepDefinitions {
 	public void log_weight_button_should_be_enabled() {
 		Assert.assertTrue(pom.geActivityInsightsMenuPage()
 				.validateLogWeightButtondEnabled());
+	}
+
+	@When("User clicks Log Weight button after entering valid value in {string}")
+	public void user_clicks_log_weight_button_after_entering_valid_value_in(
+			String userWeight) throws InterruptedException {
+
+		pom.geActivityInsightsMenuPage().updateValidWeight(userWeight);
+
+	}
+
+	@Then("Entered {string} should be added to the tracking record")
+	public void entered_should_be_added_to_the_tracking_record(
+			String userWeight) {
+
+		System.out.println(pom.geActivityInsightsMenuPage().getCurrentWeight());
+		System.out.println("expected" + userWeight + " kg");
+		Assert.assertTrue(pom.geActivityInsightsMenuPage().getCurrentWeight()
+				.equals(userWeight + " kg"));
+	}
+
+	@When("User enter value in {string} after clicking track weight in sub menu")
+	public void user_enter_value_in_after_clicking_track_weight_in_sub_menu(
+			String userWeight) {
+
+		pom.geActivityInsightsMenuPage().updateInvalidWeight(userWeight);
+
+	}
+
+	@Then("Error message {string} should be displayed")
+	public void error_message_should_be_displayed(String errorMsg) {
+
+		errorMsg = "Please enter a valid weight value.";
+		Assert.assertTrue(pom.geActivityInsightsMenuPage().getErrorMsg()
+				.equals(errorMsg));
+
+	}
+
+	@When("User clicks save button after entering valid {string} in weight")
+	public void user_clicks_save_button_after_entering_valid_in_weight(
+			String userWeight) throws InterruptedException {
+		pom.geActivityInsightsMenuPage().updateValidWeight(userWeight);
+
+	}
+
+	@Then("{string} graph should plot the new value for that day")
+	public void graph_should_plot_the_new_value_for_that_day(String string)
+			throws InterruptedException {
+		// pom.geActivityInsightsMenuPage().graphchart();
+		Assert.assertTrue(pom.geActivityInsightsMenuPage()
+				.validateWeightProgressOvertime());
+	}
+
+	@Then("Line chart should reflect weight trend changes")
+	public void line_chart_should_reflect_weight_trend_changes()
+			throws InterruptedException {
+		Assert.assertTrue(
+				pom.geActivityInsightsMenuPage().validateGraphlinechart());
 	}
 
 }
