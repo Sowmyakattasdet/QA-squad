@@ -9,6 +9,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utils.ConfigReader;
+
 public class SignUpPage extends BasePage {
 	WebDriver driver;
 
@@ -64,8 +66,6 @@ public class SignUpPage extends BasePage {
 	private WebElement homePageloginButton;
 
 	public SignUpPage(WebDriver indriver) {
-		//// this.driver = indriver;
-		// PageFactory.initElements(indriver, this);
 
 		super(indriver);
 	}
@@ -193,11 +193,13 @@ public class SignUpPage extends BasePage {
 	}
 
 	public void login() throws InterruptedException {
+		String email = ConfigReader.getProperty("app.username");
+		String password1 = ConfigReader.getProperty("app.password");
 		homePageloginButton.click();
 		userName.clear();
-		userName.sendKeys("qasquadteam3@gmail.com");
+		userName.sendKeys(email);
 		password.clear();
-		password.sendKeys("herbalance123");
+		password.sendKeys(password1);
 		loginButton.click();
 		Thread.sleep(3000);
 

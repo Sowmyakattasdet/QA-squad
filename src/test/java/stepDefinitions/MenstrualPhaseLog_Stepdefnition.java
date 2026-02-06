@@ -20,16 +20,13 @@ public class MenstrualPhaseLog_Stepdefnition {
 	public void user_is_on_the_her_balance_dashboard_with_the_activity_insights_submenu_expanded()
 			throws InterruptedException {
 		pom.getSignUpPage().login();
-		// pom.geActivityInsightsMenuPage().Login();
-		// pom.geActivityInsightsMenuPage().clickOnMenu();
+
 		pom.getMenstrualPhaseLogs_Page().clickOnInsightsMenu();
 		Thread.sleep(2000);
 	}
 
 	@When("User Clicks on Menstrual Phase Logs")
 	public void user_clicks_on_menstrual_phase_logs() {
-
-		// menstrualphaselogspage.menstrualPhaseLogs();
 
 		pom.getMenstrualPhaseLogs_Page().menstrualPhaseLogs();
 

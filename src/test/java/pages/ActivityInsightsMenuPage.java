@@ -105,8 +105,6 @@ public class ActivityInsightsMenuPage extends BasePage {
 	@FindBy(xpath = "//p[text()='Remaining']/following-sibling::p")
 	private WebElement remainingWeight;
 
-	// @FindBy(xpath = "//span[text()='Weight Loss
-	// Progress']/../following-sibling::div[@role='progressbar']")
 	@FindBy(xpath = "//div[@role='progressbar']")
 	private WebElement progressBar;
 
@@ -420,8 +418,6 @@ public class ActivityInsightsMenuPage extends BasePage {
 
 			elementActions.sendKeys(enterWeightField, "22");
 
-			System.out.println("value is"
-					+ elementActions.getAttribute(captureBMIField, "value"));
 			String BMI = elementActions.getAttribute(captureBMIField, "value");
 			return (BMI.matches("\\d+\\.\\d+"));
 		}
@@ -531,7 +527,7 @@ public class ActivityInsightsMenuPage extends BasePage {
 		if (elementActions.getElementCount(weightsfromWeightLog) > 0) {
 			String weightlog = weightsfromWeightLog.get(0).getText();
 			String daylog = weightsfromWeightLog.get(1).getText();
-			// System.out.println("Day " + daylog);
+
 			String[] logday = daylog.split(" • ");
 
 			daylog = logday[logday.length - 1];
@@ -541,7 +537,7 @@ public class ActivityInsightsMenuPage extends BasePage {
 			elementActions.mouseOverAnElement(lineChartCircle);
 			Thread.sleep(5000);
 			if (elementActions.isElemnetDisplayed(tooltipDay)) {
-				// graphDay = elementActions.getText(tooltipDay);
+
 				graphWeight = elementActions.getText(tooltipWeight);
 
 				String i = elementActions.getAttribute(activeCircle, "cx");

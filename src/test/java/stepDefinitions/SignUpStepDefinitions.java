@@ -49,7 +49,6 @@ public class SignUpStepDefinitions {
 		driver.get(ConfigReader.getProperty("appURL"));
 	}
 
-
 	@Given("User is on the HerBalance auth page.")
 	public void user_is_on_the_her_balance_auth_page() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
@@ -58,7 +57,6 @@ public class SignUpStepDefinitions {
 		Assert.assertTrue(currentUrl.contains("auth"),
 				"User is not on login page" + currentUrl);
 	}
-
 
 	@When("User enters valid  details \\(Email ID, Password, and Confirm Password) and clicks the Register button from given {string}")
 	public void user_enters_valid_details_email_id_password_and_confirm_password_and_clicks_the_register_button_from_given(
@@ -78,14 +76,7 @@ public class SignUpStepDefinitions {
 
 	@Then("User should be redirected to the onboarding step")
 	public void user_should_be_redirected_to_the_onboarding_step() {
-		/*
-		 * WebDriverWait wait = new WebDriverWait(driver,
-		 * Duration.ofSeconds(20));
-		 * wait.until(ExpectedConditions.urlContains("onboarding")); String
-		 * currentUrl = driver.getCurrentUrl();
-		 * Assert.assertTrue(currentUrl.contains("onboarding"),
-		 * "User is not on onboarding page" + currentUrl);
-		 */
+
 		driver.navigate().to(ConfigReader.getProperty("appURL") + "onboarding");
 	}
 

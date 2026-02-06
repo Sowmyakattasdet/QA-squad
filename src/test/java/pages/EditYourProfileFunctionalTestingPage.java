@@ -72,7 +72,8 @@ public class EditYourProfileFunctionalTestingPage extends BasePage {
 	}
 
 	public boolean basicinfoSectionDisplayed() throws InterruptedException {
-		return wait.until(ExpectedConditions.visibilityOf(basicInfoSection)).isDisplayed();
+		return wait.until(ExpectedConditions.visibilityOf(basicInfoSection))
+				.isDisplayed();
 	}
 
 	public void clickSaveProfileBtn() {
@@ -84,14 +85,15 @@ public class EditYourProfileFunctionalTestingPage extends BasePage {
 	}
 
 	public String getProfilSaveMsgTxt() {
-		return wait.until(ExpectedConditions.visibilityOf(profileSaveMsg)).getText();
+		return wait.until(ExpectedConditions.visibilityOf(profileSaveMsg))
+				.getText();
 
 	}
 
 	public void clickAddMedicationBtn() {
 		addMedicationBtn.click();
 	}
-	
+
 	public void clickPreferenceTab() {
 		preferenceTab.click();
 	}
@@ -124,9 +126,9 @@ public class EditYourProfileFunctionalTestingPage extends BasePage {
 			alert.sendKeys("Motrin");
 			Thread.sleep(5000);
 			alert.accept();
-			System.out.println("inputbox present");
+
 		} catch (Exception e) {
-			System.out.println("No inputbox present");
+
 		}
 
 	}

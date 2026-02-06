@@ -21,15 +21,11 @@ public class LaunchStepDefinitions {
 	private WebDriver driver;
 	private PageObjectManager pom;
 
-	// public ActivityInsightsMenuStepDefinitions(Hooks hooks) {
-	// this.pom = hooks.getPom();
-	// }
-
 	public LaunchStepDefinitions(Hooks hooks) {
 		driver = DriverManager.getDriver();
 		driver.get(ConfigReader.getProperty("appURL"));
 		this.pom = hooks.getPom();
-		// launchPg = new LaunchPage(driver);
+
 	}
 
 	@Given("User is on the browser")
@@ -97,14 +93,6 @@ public class LaunchStepDefinitions {
 		String currentUrl = driver.getCurrentUrl();
 		Assert.assertEquals(currentUrl, appURL);
 	}
-	/* commented because of duplicate with login */
-	// @When("User clicks log in button")
-	// public void user_clicks_log_in_button() {
-	// WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-	// WebElement login =
-	// wait.until(ExpectedConditions.elementToBeClickable(pom.getLaunchPage().btnLgn));
-	// login.click();
-	// }
 
 	@When("User clicks log in button.")
 	public void user_clicks_log_in_button() {

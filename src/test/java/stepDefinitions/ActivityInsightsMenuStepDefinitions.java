@@ -90,7 +90,7 @@ public class ActivityInsightsMenuStepDefinitions {
 		pom.geActivityInsightsMenuPage().clickOnSubMenu();
 		String actualWeight = pom.geActivityInsightsMenuPage()
 				.getStartingWeightfromInsight();
-		// Thread.sleep(2000);
+
 		Assert.assertEquals(actualWeight, expectedWeight);
 
 	}
@@ -260,8 +260,6 @@ public class ActivityInsightsMenuStepDefinitions {
 	public void entered_should_be_added_to_the_tracking_record(
 			String userWeight) {
 
-		System.out.println(pom.geActivityInsightsMenuPage().getCurrentWeight());
-		System.out.println("expected" + userWeight + " kg");
 		Assert.assertTrue(pom.geActivityInsightsMenuPage().getCurrentWeight()
 				.equals(userWeight + " kg"));
 	}
@@ -293,7 +291,7 @@ public class ActivityInsightsMenuStepDefinitions {
 	@Then("{string} graph should plot the new value for that day")
 	public void graph_should_plot_the_new_value_for_that_day(String string)
 			throws InterruptedException {
-		// pom.geActivityInsightsMenuPage().graphchart();
+
 		Assert.assertTrue(pom.geActivityInsightsMenuPage()
 				.validateWeightProgressOvertime());
 	}

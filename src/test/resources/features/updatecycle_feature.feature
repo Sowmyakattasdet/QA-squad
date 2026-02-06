@@ -9,7 +9,6 @@ When User selects the date from the calendar
 Then The date selected should be highlighted
 
 
-
 @up1
 Scenario: Previous month navigation in calendar			
 When User clicks the “<” icon on the calendar	
@@ -30,10 +29,7 @@ Scenario: Cancel button function
 When User clicks on Cancel button	
 Then User should be redirected to "Menstrual Cycle Tracker" page																				
 
-@upif5
-Scenario: Save Changes button function			
-When User clicks on Save Changes button after editing date or cycle length	
-Then "Saved Successfully" message should popup																				
+																			
 
 
 

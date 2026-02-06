@@ -23,8 +23,7 @@ public class MenstrualPhaseLogs_Page extends BasePage {
 	public WebElement cycleOverview;
 	@FindBy(xpath = "//*[text() = 'Menstrual Calendar']")
 	public WebElement menstrualCalendar;
-	// @FindBy(xpath = "//span[normalize-space()='Add Period Log']") public
-	// WebElement addperiodlog1;
+
 	@FindBy(xpath = "//*[text() =\"Period History\"]")
 	public WebElement periodhistory;
 	@FindBy(xpath = "//*[text()='Current Cycle Status']")
@@ -69,17 +68,6 @@ public class MenstrualPhaseLogs_Page extends BasePage {
 	@FindBy(xpath = " //*[text()='Next Period']")
 	public WebElement nextPeriod;
 
-	/*
-	 * @FindBy(xpath =
-	 * 
-	 * @FindBy(xpath =
-	 * 
-	 * @FindBy(xpath =
-	 * 
-	 * @FindBy(xpath =
-	 * 
-	 */
-
 	public MenstrualPhaseLogs_Page(WebDriver driver) {
 		super(driver);
 		// elementActions = new ElementActions(driver);
@@ -96,20 +84,7 @@ public class MenstrualPhaseLogs_Page extends BasePage {
 
 	@FindBy(xpath = "//*[@type='submit']")
 	private WebElement loginButton;
-	// ---------------------------- signup methods
-	// ----------------------------------
-	public void Login() {
 
-		userName.sendKeys("qasquad@gmail.com");
-		password.sendKeys("HerBalance123");
-		loginButton.click();
-	}
-
-	// public void launchApplication() {
-	//
-	// driver.get(ConfigReader.getProperty("appURL"));
-	//
-	// }
 	// ----------------------------------------------------------------------------------
 
 	public void menstrualPhaseLogs() {
@@ -148,7 +123,7 @@ public class MenstrualPhaseLogs_Page extends BasePage {
 
 	public boolean detailsOnMenstrualPage() throws InterruptedException {
 		Thread.sleep(2000);
-		System.out.println("text is:" + currentCycleStatus.getText());
+
 		return (currentCycleStatus.isDisplayed() && upcomingphases.isDisplayed()
 				&& recommendedActivities.isDisplayed()
 				&& nutrtionTips.isDisplayed() && nextPeriod.isDisplayed());

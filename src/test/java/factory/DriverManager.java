@@ -20,7 +20,6 @@ public class DriverManager {
 
 		String browserType = null;
 		BrowserOptions browserOptions = new BrowserOptions();
-		// browserType = ConfigReader.getProperty("browser");
 
 		browserType = driverbrowser.get();
 

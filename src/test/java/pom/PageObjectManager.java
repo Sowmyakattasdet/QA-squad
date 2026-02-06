@@ -28,8 +28,7 @@ public class PageObjectManager {
 	private UpdateCycle_Page updateCyclePage;
 
 	public PageObjectManager(WebDriver driver) {
-		// driverFactory = new DriverFactory();
-		// driver = driverFactory.getDriver();
+
 		this.driver = driver;
 
 	}

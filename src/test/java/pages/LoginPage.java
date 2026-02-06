@@ -16,14 +16,17 @@ public class LoginPage {
 	private WebDriver driver;
 	private WebDriverWait wait;
 
-	private By homeLoginBtn = By.xpath("//*[self::button or self::a]" +
-		    "[normalize-space()='Log In' or normalize-space()='Login' or normalize-space()='Log in' or normalize-space()='LOG IN']");
+	private By homeLoginBtn = By.xpath("//*[self::button or self::a]"
+			+ "[normalize-space()='Log In' or normalize-space()='Login' or normalize-space()='Log in' or normalize-space()='LOG IN']");
 
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		PageFactory.initElements(driver, this);
 	}
+
+	@FindBy(xpath = "//button[@type='submit' and text()='LogIn']")
+	private WebElement loginButton;
 
 	@FindBy(css = "img[alt*='HerBalance']")
 	private WebElement logo;
@@ -37,7 +40,8 @@ public class LoginPage {
 	@FindBy(css = "input[type='password']")
 	private WebElement passwordField;
 
-	private By authLoginSubmit = By.cssSelector("button[type='submit'], form button[type='submit']");
+	private By authLoginSubmit = By
+			.cssSelector("button[type='submit'], form button[type='submit']");
 
 	@FindBy(css = ".toast, .alert, .error, [role='alert']")
 	private WebElement loginError;
@@ -87,6 +91,9 @@ public class LoginPage {
 	@FindBy(xpath = "//label[contains(text(),'Show')] | //input[@type='checkbox']")
 	private WebElement showPasswordToggle;
 
+	@FindBy(xpath = "//button[text()='Log In']")
+	private WebElement homePageloginButton;
+
 	public boolean isTestimonialDisplayed() {
 		try {
 			new WebDriverWait(driver, Duration.ofSeconds(10))
@@ -99,7 +106,8 @@ public class LoginPage {
 
 	public int getTabsCount() {
 		try {
-			new WebDriverWait(driver, Duration.ofSeconds(10)).until(d -> authTabs.size() > 0);
+			new WebDriverWait(driver, Duration.ofSeconds(10))
+					.until(d -> authTabs.size() > 0);
 			return authTabs.size();
 		} catch (Exception e) {
 			return 0;
@@ -123,7 +131,8 @@ public class LoginPage {
 		int count = 0;
 		for (WebElement e : allInputs) {
 			String type = e.getAttribute("type");
-			if ("email".equalsIgnoreCase(type) || "password".equalsIgnoreCase(type)) {
+			if ("email".equalsIgnoreCase(type)
+					|| "password".equalsIgnoreCase(type)) {
 				count++;
 			}
 		}
@@ -132,7 +141,8 @@ public class LoginPage {
 
 	public boolean isFieldsVerticallyAlignedWithSpacing() {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			WebDriverWait wait = new WebDriverWait(driver,
+					Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.visibilityOf(emailField));
 			wait.until(ExpectedConditions.visibilityOf(passwordField));
 
@@ -150,8 +160,10 @@ public class LoginPage {
 			int wDiff = Math.abs(emailRect.getWidth() - passRect.getWidth());
 			boolean similarWidth = wDiff <= 5;
 
-			// spacing: gap between email bottom and password top should be reasonable
-			int gap = passRect.getY() - (emailRect.getY() + emailRect.getHeight());
+			// spacing: gap between email bottom and password top should be
+			// reasonable
+			int gap = passRect.getY()
+					- (emailRect.getY() + emailRect.getHeight());
 			boolean reasonableGap = gap >= 5; // not overlapping
 
 			return isBelow && leftAligned && similarWidth && reasonableGap;
@@ -164,7 +176,8 @@ public class LoginPage {
 	public boolean isShowPasswordRadioVisible() {
 		try {
 			new WebDriverWait(driver, Duration.ofSeconds(10))
-					.until(ExpectedConditions.visibilityOf(showPasswordRadioOrCheckbox));
+					.until(ExpectedConditions
+							.visibilityOf(showPasswordRadioOrCheckbox));
 			return showPasswordRadioOrCheckbox.isDisplayed();
 		} catch (Exception e) {
 			return false;
@@ -203,40 +216,44 @@ public class LoginPage {
 			String classAttr = loginTab.getAttribute("class");
 			String ariaSelected = loginTab.getAttribute("aria-selected");
 
-			return (classAttr != null && classAttr.toLowerCase().contains("active"))
+			return (classAttr != null
+					&& classAttr.toLowerCase().contains("active"))
 					|| "true".equalsIgnoreCase(ariaSelected);
 		} catch (Exception e) {
 			return false;
 		}
 	}
 
-	public boolean isEmailFieldVisibleWithPlaceholder(String expectedPlaceholder) {
+	public boolean isEmailFieldVisibleWithPlaceholder(
+			String expectedPlaceholder) {
 		try {
 			wait.until(ExpectedConditions.visibilityOf(emailField));
 			String actual = emailField.getAttribute("placeholder");
-			
+
 			System.out.println(actual);
-			
-			return emailField.isDisplayed() && actual != null
-					&& actual.trim().equalsIgnoreCase(expectedPlaceholder.trim());
+
+			return emailField.isDisplayed() && actual != null && actual.trim()
+					.equalsIgnoreCase(expectedPlaceholder.trim());
 		} catch (Exception e) {
 			return false;
 		}
-	
+
 	}
 
 	public boolean isPasswordFieldVisibleAndMasked() {
 		try {
 			wait.until(ExpectedConditions.visibilityOf(passwordField));
 			String type = passwordField.getAttribute("type");
-			return passwordField.isDisplayed() && "password".equalsIgnoreCase(type);
+			return passwordField.isDisplayed()
+					&& "password".equalsIgnoreCase(type);
 		} catch (Exception e) {
 			return false;
 		}
 	}
 
 	public void login(String email, String password) {
-		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(emailField));
+		new WebDriverWait(driver, Duration.ofSeconds(10))
+				.until(ExpectedConditions.visibilityOf(emailField));
 
 		emailField.clear();
 		emailField.sendKeys(email);
@@ -244,16 +261,19 @@ public class LoginPage {
 		passwordField.clear();
 		passwordField.sendKeys(password);
 
-		//loginButton.click();
+		// loginButton.click();
 
 		new WebDriverWait(driver, Duration.ofSeconds(20))
-				.until(ExpectedConditions.not(ExpectedConditions.urlContains("/auth")));
+				.until(ExpectedConditions
+						.not(ExpectedConditions.urlContains("/auth")));
 	}
 
 	public boolean isOnDashboard() {
 		try {
-			// success signal: either URL leaves /auth OR a logged-in marker appears
-			return wait.until(d -> !d.getCurrentUrl().contains("/auth")) || isElementVisible(loggedInMarker);
+			// success signal: either URL leaves /auth OR a logged-in marker
+			// appears
+			return wait.until(d -> !d.getCurrentUrl().contains("/auth"))
+					|| isElementVisible(loggedInMarker);
 		} catch (Exception e) {
 			return false;
 		}
@@ -274,7 +294,8 @@ public class LoginPage {
 
 	public boolean isShowPasswordVisible() {
 		try {
-			new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(showPassword));
+			new WebDriverWait(driver, Duration.ofSeconds(10))
+					.until(ExpectedConditions.visibilityOf(showPassword));
 			return showPassword.isDisplayed();
 		} catch (Exception e) {
 			return false;
@@ -283,7 +304,8 @@ public class LoginPage {
 
 	public boolean isLoginButtonVisibleAndEnabled() {
 		try {
-			new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(loginBtnOnAuth));
+			new WebDriverWait(driver, Duration.ofSeconds(10))
+					.until(ExpectedConditions.visibilityOf(loginBtnOnAuth));
 			return loginBtnOnAuth.isDisplayed() && loginBtnOnAuth.isEnabled();
 		} catch (Exception e) {
 			return false;
@@ -302,7 +324,8 @@ public class LoginPage {
 
 	public boolean isSignUpLinkVisible() {
 		try {
-			new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(signUpLinkOrTab));
+			new WebDriverWait(driver, Duration.ofSeconds(10))
+					.until(ExpectedConditions.visibilityOf(signUpLinkOrTab));
 			return signUpLinkOrTab.isDisplayed();
 		} catch (Exception e) {
 			return false;
@@ -311,23 +334,28 @@ public class LoginPage {
 
 	public void clickSignUpLink() {
 		new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.elementToBeClickable(signUpLinkOrTab)).click();
+				.until(ExpectedConditions.elementToBeClickable(signUpLinkOrTab))
+				.click();
 	}
 
 	public boolean isOnSignUpPage() {
 		// simplest: URL OR page content check
 		String url = driver.getCurrentUrl();
-		return url.toLowerCase().contains("signup") || url.toLowerCase().contains("sign-up");
+		return url.toLowerCase().contains("signup")
+				|| url.toLowerCase().contains("sign-up");
 	}
 
 	public boolean isRightPanelContentPresent() {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			WebDriverWait wait = new WebDriverWait(driver,
+					Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.visibilityOf(cycleSyncedPlansText));
 			wait.until(ExpectedConditions.visibilityOf(bloodWorkAnalysisText));
-			wait.until(ExpectedConditions.visibilityOf(personalizedDashboardText));
+			wait.until(
+					ExpectedConditions.visibilityOf(personalizedDashboardText));
 
-			return cycleSyncedPlansText.isDisplayed() && bloodWorkAnalysisText.isDisplayed()
+			return cycleSyncedPlansText.isDisplayed()
+					&& bloodWorkAnalysisText.isDisplayed()
 					&& personalizedDashboardText.isDisplayed();
 		} catch (Exception e) {
 			return false;
@@ -336,19 +364,22 @@ public class LoginPage {
 
 	public boolean isSignUpTabActive() {
 		try {
-			new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(signUpTab));
+			new WebDriverWait(driver, Duration.ofSeconds(10))
+					.until(ExpectedConditions.visibilityOf(signUpTab));
 
 			String cls = signUpTab.getAttribute("class");
 			String aria = signUpTab.getAttribute("aria-selected");
 
-			return (cls != null && cls.toLowerCase().contains("active")) || "true".equalsIgnoreCase(aria);
+			return (cls != null && cls.toLowerCase().contains("active"))
+					|| "true".equalsIgnoreCase(aria);
 		} catch (Exception e) {
 			return false;
 		}
 	}
 
 	public void clickSignUpTab() {
-		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(signUpTab))
+		new WebDriverWait(driver, Duration.ofSeconds(10))
+				.until(ExpectedConditions.elementToBeClickable(signUpTab))
 				.click();
 	}
 
@@ -365,19 +396,21 @@ public class LoginPage {
 	}
 
 	public void clickLoginOnAuthPage() {
-	    WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(authLoginSubmit));
-	    btn.click();
+		WebElement btn = wait.until(
+				ExpectedConditions.elementToBeClickable(authLoginSubmit));
+		btn.click();
 	}
 
-
 	public boolean isOnAuthPage() {
-		return driver.getCurrentUrl().contains("/auth") && isElementVisible(loginTab);
+		return driver.getCurrentUrl().contains("/auth")
+				&& isElementVisible(loginTab);
 	}
 
 	public boolean waitForDashboard() {
 		try {
 			new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.not(ExpectedConditions.urlContains("/auth")));
+					.until(ExpectedConditions
+							.not(ExpectedConditions.urlContains("/auth")));
 			return true;
 		} catch (Exception e) {
 			return false;
@@ -399,10 +432,11 @@ public class LoginPage {
 	}
 
 	public void toggleShowPassword() {
-		wait.until(ExpectedConditions.elementToBeClickable(showPasswordRadioOrCheckbox)).click();
+		wait.until(ExpectedConditions
+				.elementToBeClickable(showPasswordRadioOrCheckbox)).click();
 	}
 
-//-------- clear fields ----------
+	// -------- clear fields ----------
 	public void clearEmail() {
 		wait.until(ExpectedConditions.visibilityOf(emailField));
 		emailField.clear();
@@ -413,7 +447,7 @@ public class LoginPage {
 		passwordField.clear();
 	}
 
-//-------- validation messages ----------
+	// -------- validation messages ----------
 	public String getEmailValidationMessage() {
 		try {
 			return emailField.getAttribute("validationMessage");
@@ -430,48 +464,55 @@ public class LoginPage {
 		}
 	}
 
-//-------- show password ----------
+	// -------- show password ----------
 	public void enableShowPassword() {
-		wait.until(ExpectedConditions.elementToBeClickable(showPasswordRadioOrCheckbox)).click();
+		wait.until(ExpectedConditions
+				.elementToBeClickable(showPasswordRadioOrCheckbox)).click();
 	}
 
 	public void disableShowPassword() {
-		wait.until(ExpectedConditions.elementToBeClickable(showPasswordRadioOrCheckbox)).click();
+		wait.until(ExpectedConditions
+				.elementToBeClickable(showPasswordRadioOrCheckbox)).click();
 	}
 
-
-//---------- eye icon (show/hide password) ----------
+	// ---------- eye icon (show/hide password) ----------
 	public void clickEyeIcon() {
-		By eyeBtn = By.cssSelector("button[aria-label*='password'], button[aria-label*='Password'], "
-				+ "button[type='button'][aria-label*='Show'], button[type='button'][aria-label*='Hide']");
+		By eyeBtn = By.cssSelector(
+				"button[aria-label*='password'], button[aria-label*='Password'], "
+						+ "button[type='button'][aria-label*='Show'], button[type='button'][aria-label*='Hide']");
 
 		WebElement btn = new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.elementToBeClickable(eyeBtn));
 		btn.click();
 	}
 
-//---------- generic link click by visible text ----------
+	// ---------- generic link click by visible text ----------
 	public void clickLinkByText(String linkText) {
-		By link = By.xpath("//*[self::a or self::button][normalize-space()='" + linkText + "']");
-		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(link)).click();
+		By link = By.xpath("//*[self::a or self::button][normalize-space()='"
+				+ linkText + "']");
+		new WebDriverWait(driver, Duration.ofSeconds(10))
+				.until(ExpectedConditions.elementToBeClickable(link)).click();
 	}
 
-//---------- forgot password page check ----------
+	// ---------- forgot password page check ----------
 	public boolean isOnForgotPasswordPage() {
 		String url = driver.getCurrentUrl().toLowerCase();
 		return url.contains("forgot") || url.contains("reset");
 	}
 
-//---------- tab click (Login / Sign Up) ----------
+	// ---------- tab click (Login / Sign Up) ----------
 	public void clickTab(String tab) {
+
 		String t = tab.toLowerCase().trim();
 		if (t.equals("login")) {
-			new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(loginTab))
+			new WebDriverWait(driver, Duration.ofSeconds(10))
+					.until(ExpectedConditions.elementToBeClickable(loginTab))
 					.click();
 			return;
 		}
 		if (t.equals("sign up") || t.equals("signup")) {
-			new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(signUpTab))
+			new WebDriverWait(driver, Duration.ofSeconds(10))
+					.until(ExpectedConditions.elementToBeClickable(signUpTab))
 					.click();
 			return;
 		}

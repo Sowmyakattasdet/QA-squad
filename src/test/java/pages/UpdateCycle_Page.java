@@ -4,7 +4,6 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 
 //import io.cucumber.messages.types.Duration;
 
@@ -24,7 +23,6 @@ public class UpdateCycle_Page extends BasePage {
 
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-	// WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
 	@FindBy(xpath = "//*[text()='Menstrual Phase Logs']\")")
 	private WebElement mp;
 
@@ -50,8 +48,7 @@ public class UpdateCycle_Page extends BasePage {
 	public WebElement updateCycleLengthDays;
 	@FindBy(xpath = "//button[text() ='Cancel']")
 	public WebElement cancelButton;
-	// @FindBy(xpath = "//button[text() ='Save Changes']") public WebElement
-	// saveChanges;
+
 	@FindBy(xpath = "//button[contains(.,'Save Changes')]")
 	public WebElement saveChanges;
 	@FindBy(xpath = "//*[@class='grid gap-1 flex-1']")
@@ -66,14 +63,9 @@ public class UpdateCycle_Page extends BasePage {
 	@FindBy(xpath = "//button[@name='day' and not(@disabled)]")
 	private List<WebElement> selectdate;
 
-	// button[contains(.,'Save Changes')]
-
-	// ElementActions elementActions;
-
 	public UpdateCycle_Page(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
-		// elementActions = new ElementActions(driver);
 
 	}
 
@@ -139,39 +131,10 @@ public class UpdateCycle_Page extends BasePage {
 	}
 
 	public void navigateTomenstrualPhaseLogs() {
-		// Actions actions = new Actions(driver);
 
 		Actions actions = new Actions(driver);
 		actions.moveToElement(menstrualphaselogs1);
 		actions.click(menstrualPhaseLogs).perform();
-
-		// wait.until(ExpectedConditions.visibilityOf(menstrualPhaseLogs));
-		// actions.click(menstrualPhaseLogs).perform();
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("arguments[0].click();", menstrualPhaseLogs);
-
-		// elementActions.clickAction(activityInsights);
-		// actions.moveToElement(activityInsights).pause(Duration.ofMillis(500)).click(menstrualphaselogs1).build().perform();
-		// wait().until(ExpectedConditions.invisibilityOfElementLocated(menstrualPhaseLogs));
-		// wait.until(ExpectedConditions.invisibilityOfElementLocated(menstrualPhaseLogs));
-		// actions.click(menstrualPhaseLogs).perform();
-		// elementActions.clickAction(menstrualPhaseLogs);
-		// actions.moveToElement(menstrualPhaseLogs).perform();
-
-		// elementActions.clickElementByText(menstrualPhaseLogs.getText(),
-		// "Menstrual Phase Logs");
-
-		// elementActions.getWait().until(ExpectedConditons.urlContains("menstrual-cycle"));
-
-		// wait.until(
-		// ExpectedConditions.visibilityOfElementLocated(activityInsightsBtn)
-		// );
-		// actions.moveToElement(menu).perform();
-
-		// wait.until(ExpectedConditions.elementToBeClickable(menstrualPhaseLogsOption)).click();
-
-		// wait.until(ExpectedConditions.elementToBeClickable(activityInsights)).click();
-		// wait.until(ExpectedConditions.elementToBeClickable(menstrualPhaseLogs)).click();
 
 	}
 
@@ -209,14 +172,6 @@ public class UpdateCycle_Page extends BasePage {
 		return bgColor.equals("rgba(0, 123, 255, 1)");
 	}
 
-	/*
-	 * public boolean isDateHighlighted() { String classValue =
-	 * calendarspecificdate.getAttribute("class"); return
-	 * classValue.contains("selected") || classValue.contains("active") ||
-	 * classValue.contains("highlight"); }
-	 * 
-	 */
-
 	public void previousMonth() {
 		previousMonth.click();
 	}
@@ -224,14 +179,6 @@ public class UpdateCycle_Page extends BasePage {
 	public void nextMonth() {
 		nextMonth.click();
 	}
-
-	/*
-	 * public String movingIcon() { if (direction.equals("<")) { // click
-	 * previous month icon } else if (direction.equals(">")) { // click next
-	 * month icon }
-	 * 
-	 * }
-	 */
 
 	public void updateCycleLengthDays(String action, int value) {
 
@@ -265,10 +212,5 @@ public class UpdateCycle_Page extends BasePage {
 	public void clicksaveChanges() {
 		saveChanges.click();
 	}
-
-	// public boolean cycleLengthSaveChangepopupmessage() {
-	// return elementActions
-	// .isElemnetDisplayed(cycleLengthSaveChangepopupmessage);
-	// }
 
 }

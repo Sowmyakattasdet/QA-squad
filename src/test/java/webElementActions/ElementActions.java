@@ -130,7 +130,7 @@ public class ElementActions {
 			String alertMsg = alert.getText();
 			alert.accept();
 			System.out.println("alert is" + alertMsg);
-			// logger.info("Error Message from alert " + alertMsg);
+
 			return (alertMsg);
 		} catch (NoAlertPresentException e) {
 			return null;

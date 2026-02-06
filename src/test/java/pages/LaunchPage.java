@@ -13,8 +13,6 @@ import utils.ConfigReader;
 
 public class LaunchPage extends BasePage {
 
-	// WebDriver driver;
-
 	@FindBy(xpath = "//span[normalize-space()='Menstrual']")
 	public WebElement txtCycleMenstrualPhase;
 
@@ -52,8 +50,7 @@ public class LaunchPage extends BasePage {
 	public WebElement BtnStartPersonJny;
 
 	public LaunchPage(WebDriver driver) {
-		// LoggerFactory.getLogger().info("Incoming Driver:{}", indriver);
-		// this.driver = indriver;
+
 		super(driver);
 
 	}
@@ -88,6 +85,7 @@ public class LaunchPage extends BasePage {
 	}
 	public void launchApplication() {
 		driver.get(ConfigReader.getProperty("appURL"));
+
 	}
 	public boolean displayCards() {
 

@@ -22,49 +22,15 @@ public class Updatecycle_Stepdefnition {
 	public void user_is_on_update_cycle_information_popup()
 			throws InterruptedException {
 
-		pom.geActivityInsightsMenuPage().Login();
+		pom.getSignUpPage().login();
 		Thread.sleep(5000);
 		pom.getMenstrualPhaseLogs_Page().clickOnInsightsMenu();
 		pom.getMenstrualPhaseLogs_Page().clickOnMenstrualPhaseLog();
 		pom.getUpdateCycle_Page().updateCycleInformation.click();
-
 		Thread.sleep(3000);
-
-		// pom.getUpdateCycle_Page().menstrualclkMpl().click();
-		Thread.sleep(3000);
-		// pom.getUpdateCycle_Page().menstrualclkMpl();
-
-		/*
-		 * driver.get("https://herbalance.numpyninja.com/auth"); //
-		 * driver.get("https://herbalance.numpyninja.com/profile/edit");
-		 * driver.findElement(By.xpath("//*[@name='username']")).sendKeys(
-		 * "qasquadteam3@gmail.com");
-		 * driver.findElement(By.xpath("//*[@type='password']")).sendKeys(
-		 * "herbalance123");
-		 * driver.findElement(By.xpath("//*[@type='submit']")).click();
-		 * Thread.sleep(5000);
-		 */
-
-		/*
-		 * .navigateTomenstrualPhaseLogs();
-		 * //pom.getUpdateCycle_Page().menstrualPhaseLogs();
-		 * 
-		 * 
-		 * 
-		 */
-
-		/*
-		 * pom.geActivityInsightsMenuPage().Login();
-		 * pom.geActivityInsightsMenuPage().clickOnMenu(); Thread.sleep(2000);
-		 * 
-		 * //pom.getUpdateCycle_Page().navigateTomenstrualPhaseLogs();
-		 * //pom.getUpdateCycle_Page().menstrualPhaseLogs();
-		 * 
-		 */
 
 	}
 
-	// @UpdateCycleInformation
 	@When("User selects the date from the calendar")
 	public void user_selects_the_date_from_the_calendar() {
 
@@ -90,15 +56,6 @@ public class Updatecycle_Stepdefnition {
 		throw new io.cucumber.java.PendingException();
 	}
 
-	/*
-	 * @When("User clicks the “>” icon on the calendar") public void
-	 * user_clicks_the_icon_on_the_calendar() { // Write code here that turns
-	 * the phrase above into concrete actions throw new
-	 * io.cucumber.java.PendingException();
-	 * 
-	 * if (direction.equals("<")) { // click previous month icon } else if
-	 * (direction.equals(">")) { // click next month icon } }
-	 */
 	// @upif2
 	@When("User clicks the {string} right icon on the calendar")
 	public void user_clicks_the_right_icon_on_the_calendar(String string) {
@@ -147,40 +104,4 @@ public class Updatecycle_Stepdefnition {
 		pom.getUpdateCycle_Page().clicksaveChanges();
 	}
 
-	@Then("{string} message should popup")
-	public void message_should_popup(String expectedMessage) {
-
-		// String actualMessage
-		// =pom.getUpdateCycle_Page().cycleLengthSaveChangepopupmessage();
-		//
-		// Assert.assertTrue(
-		// pom.getUpdateCycle_Page().cycleLengthSaveChangepopupmessage(),
-		// "Saved Successfully popup was not displayed");
-
-		// Assert.assertEquals(actualMessage, expectedMessage,"Displayed message
-		// matched");
-		// Assert.assertNotEquals(actualMessage, expectedMessage,"Displayed
-		// message matched");
-
-	}
-
 }
-
-/*
- * pom.getActivityInsightsPage().openMenstrualPhaseLogs(); Assert.assertTrue(
- * pom.getUpdateCycle_Page().isUpdateCyclePageDisplayed(),
- * "Update Cycle Information page is not displayed"
- * 
- * 
- * 
- * 
- **/
-
-/*
- * pom.geActivityInsightsMenuPage().Login();
- * pom.geActivityInsightsMenuPage().clickOnMenu(); Thread.sleep(2000);
- * 
- * //pom.getUpdateCycle_Page().navigateTomenstrualPhaseLogs();
- * //pom.getUpdateCycle_Page().menstrualPhaseLogs();
- * 
- */

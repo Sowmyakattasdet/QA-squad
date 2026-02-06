@@ -1,3 +1,4 @@
+
 Feature: Weight Tracking UI Verification/Weight Tracking functional verification
 
 
@@ -117,7 +118,7 @@ Scenario Outline: New tracking record appears after logging weight
       | "75.0"         |
       |	"23.0"		   |
  
- @ActivityInsightxInvalidWeights     
+@ActivityInsightxInvalidWeights     
 Scenario Outline: Invalid weight entries show error handling
 	When User enter value in <UserWeight> after clicking track weight in sub menu
 	Then Error message " Enter valid weight " should be displayed
@@ -128,7 +129,7 @@ Scenario Outline: Invalid weight entries show error handling
       | "-23.0"         |        
       | "-345"      	|
  
- @ActivityInsightWPO    
+@ActivityInsightWPO    
 Scenario Outline: Graph updates after weight entry
 	When User clicks save button after entering valid <UserWeight> in weight
 	Then "Weight Progression Over Time" graph should plot the new value for that day

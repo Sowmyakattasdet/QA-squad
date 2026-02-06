@@ -23,8 +23,6 @@ public class DashboardStepDefinitions {
 	public void user_is_on_the_her_balance_auth_page()
 			throws InterruptedException {
 
-		// pom.getDashboardPage().launchApplication();
-		// pom.getLaunchPage().clickLoginButton();
 		pom.getSignUpPage().login();
 
 	}
@@ -45,16 +43,15 @@ public class DashboardStepDefinitions {
 	@Then("User should see user name on the top right side")
 	public void user_should_see_user_name_on_the_top_right_side() {
 		boolean actout = pom.getDashboardPage().profile_name();
-		LoggerFactory.getLogger().info(
-				"Verifying username on the topright side");
+		LoggerFactory.getLogger()
+				.info("Verifying username on the topright side");
 		Assert.assertTrue(actout, "user name is not displayed");
 	}
 
 	@Then("User should see profile icon near user name")
 	public void user_should_see_profile_icon_near_user_name() {
 		boolean actout = pom.getDashboardPage().profileicondisplay();
-		LoggerFactory.getLogger().info(
-				"Verifying profile icon near username");
+		LoggerFactory.getLogger().info("Verifying profile icon near username");
 		Assert.assertTrue(actout, "profile icon is not displayed");
 	}
 
@@ -67,16 +64,14 @@ public class DashboardStepDefinitions {
 	@Then("User should see search bar in dashboard")
 	public void user_should_see_search_bar_in_dashboard() {
 		boolean actout = pom.getDashboardPage().searchbardisplay();
-		LoggerFactory.getLogger().info(
-				"Verifying the bell icon is displayed");
+		LoggerFactory.getLogger().info("Verifying the bell icon is displayed");
 		Assert.assertTrue(actout, "bell icon is not displayed");
 	}
 
 	@Then("User should see {int} menus in dashboard")
 	public void user_should_see_menus_in_dashboard(Integer expout) {
 		int actout = pom.getDashboardPage().countmenus();
-		LoggerFactory.getLogger().info(
-				"Verifying count of menus...");
+		LoggerFactory.getLogger().info("Verifying count of menus...");
 		Assert.assertEquals(actout, expout, "count of menus is not 12");
 	}
 
@@ -84,8 +79,7 @@ public class DashboardStepDefinitions {
 	public void user_name(String expout, String expout2, String expout3,
 			String expout4, String expout5, String expout6, String expout7,
 			String expout8, String expout9) {
-		LoggerFactory.getLogger().info(
-				"Verifying section names");
+		LoggerFactory.getLogger().info("Verifying section names");
 		String actout = pom.getDashboardPage().activityinsighttxt();
 		String actout2 = pom.getDashboardPage().dietplantxt();
 		String actout3 = pom.getDashboardPage().workouttxt();
@@ -128,8 +122,7 @@ public class DashboardStepDefinitions {
 	@Then("{int} section should be visible")
 	public void section_should_be_visible(Integer expout1) {
 		int actout = pom.getDashboardPage().countsection();
-		LoggerFactory.getLogger().info(
-				"Verifying count of secitons..");
+		LoggerFactory.getLogger().info("Verifying count of secitons..");
 		Assert.assertEquals(actout, expout1, "count of sections is not 5");
 	}
 
@@ -141,8 +134,7 @@ public class DashboardStepDefinitions {
 		String actout3 = pom.getDashboardPage().bloodrepheadsec();
 		String actout4 = pom.getDashboardPage().menstrualsechead();
 		String actout5 = pom.getDashboardPage().subscriptionsecitonhead();
-		LoggerFactory.getLogger().info(
-				"Verifying heading of the sections");
+		LoggerFactory.getLogger().info("Verifying heading of the sections");
 		soft.assertEquals(actout, expout,
 				"Weight & Body Metrics heading is not visible");
 		soft.assertEquals(actout2, expout2, "Health Conditions is not visible");
@@ -190,8 +182,8 @@ public class DashboardStepDefinitions {
 	public void should_display_the_user_s_weight_as_entered_during_the_onboarding_process() {
 		Double actout = pom.getDashboardPage().weightvaltxt();
 		Double expout = pom.getDashboardPage().weightvaltxt();
-		LoggerFactory.getLogger().info(
-				"Verifying user weight with onboarding weight");
+		LoggerFactory.getLogger()
+				.info("Verifying user weight with onboarding weight");
 		Assert.assertEquals(actout, expout, "weight is not matching");
 	}
 
@@ -199,8 +191,8 @@ public class DashboardStepDefinitions {
 	public void should_display_the_user_s_height_as_entered_during_the_onboarding_process() {
 		double actout = pom.getDashboardPage().heightvaltxt();
 		double expout = pom.getDashboardPage().getheightfromedit();
-		LoggerFactory.getLogger().info(
-				"Verifying user height with onboarding height");
+		LoggerFactory.getLogger()
+				.info("Verifying user height with onboarding height");
 		Assert.assertEquals(actout, expout, "height is not matching");
 
 	}
@@ -212,8 +204,8 @@ public class DashboardStepDefinitions {
 		double height = pom.getDashboardPage().heightvaltxt() / 100;
 		double expout = Math.round((weight) / (height * height) * 10.0) / 10.0;
 		double actout = pom.getDashboardPage().bmivaltxt();
-		LoggerFactory.getLogger().info(
-				"Verifying bmi value by calculating with ht and wt");
+		LoggerFactory.getLogger()
+				.info("Verifying bmi value by calculating with ht and wt");
 		Assert.assertEquals(actout, expout, "BMI is not matching");
 	}
 
@@ -232,17 +224,16 @@ public class DashboardStepDefinitions {
 	@Then("Weekly target should be {double} kg")
 	public void weekly_target_should_be_kg(Double expout) {
 		String actout = pom.getDashboardPage().weeklytargwt();
-		LoggerFactory.getLogger().info(
-				"Verifying weekly target ");
+		LoggerFactory.getLogger().info("Verifying weekly target ");
 		Assert.assertEquals(actout, expout, "target is not matching");
 
 	}
 	@Then("Daily weigh in should be - {string}")
 	public void daily_weigh_in_should_be(String expout) {
 		String actout = pom.getDashboardPage().dailyweightxt();
-		LoggerFactory.getLogger().info(
-				"Verifying daily weigh text");
-		Assert.assertEquals(actout, expout,"Morning, before food is not visible");
+		LoggerFactory.getLogger().info("Verifying daily weigh text");
+		Assert.assertEquals(actout, expout,
+				"Morning, before food is not visible");
 
 	}
 
@@ -250,8 +241,7 @@ public class DashboardStepDefinitions {
 	public void subcription_details_should_be_present_in_day_goal_section(
 			Integer int1) {
 		boolean actout = pom.getDashboardPage().freeplandetails();
-		LoggerFactory.getLogger().info(
-				"Verifying subtext is located or not.");
+		LoggerFactory.getLogger().info("Verifying subtext is located or not.");
 		Assert.assertTrue(actout, "subtext is not located");
 	}
 
@@ -264,8 +254,8 @@ public class DashboardStepDefinitions {
 	@Then("BMI Reference Guide component should be displayed with a gradient slider and labeled ranges")
 	public void bmi_reference_guide_component_should_be_displayed_with_a_gradient_slider_and_labeled_ranges() {
 		boolean actout = pom.getDashboardPage().gradiantslider();
-		LoggerFactory.getLogger().info(
-				"Verifying BMI reff has gradient slider ");
+		LoggerFactory.getLogger()
+				.info("Verifying BMI reff has gradient slider ");
 		Assert.assertTrue(actout, "gradiant slider is not displayed");
 
 	}
@@ -273,8 +263,8 @@ public class DashboardStepDefinitions {
 	@Then("{string} label should be visible above the slider")
 	public void label_should_be_visible_above_the_slider(String expout) {
 		String actout = pom.getDashboardPage().infolabel();
-		LoggerFactory.getLogger().info(
-				"Verifying info label is present or not");
+		LoggerFactory.getLogger()
+				.info("Verifying info label is present or not");
 		Assert.assertEquals(actout, expout, "info label is not present");
 	}
 	@Then("Message “Free plan includes {int} days of limited tracking” should be displayed clearly below the slider")
@@ -360,16 +350,17 @@ public class DashboardStepDefinitions {
 	public void status_of_plan_should_be_displayed_how_many_days_left_out_of_days_free_plan(
 			Integer int1) {
 		boolean actout = pom.getDashboardPage().subsplanrem();
-		LoggerFactory.getLogger().info(
-				"Verifying status of the plan is displayed");
-		Assert.assertTrue(actout,"subscription plan reamaining days  is not displayed");
+		LoggerFactory.getLogger()
+				.info("Verifying status of the plan is displayed");
+		Assert.assertTrue(actout,
+				"subscription plan reamaining days  is not displayed");
 
 	}
 	@Then("{string} button should be displayed")
 	public void button_should_be_displayed(String string) {
 		boolean actout = pom.getDashboardPage().premiumbtn();
-		LoggerFactory.getLogger().info(
-				"Verifying Email upgrade to premium is displayed or not");
+		LoggerFactory.getLogger()
+				.info("Verifying Email upgrade to premium is displayed or not");
 		Assert.assertTrue(actout, "Upgrade to Premium  is not displayed");
 
 	}

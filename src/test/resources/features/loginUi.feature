@@ -3,7 +3,7 @@ Feature: Auth Page UI Verification
 
   @loginui01
   Scenario: HerBalance logo visibility
-    Given User is on the HerBalance launch page
+    Given User is on the HerBalance launch page.
     When User clicks login button on home page
     Then HerBalance logo should be visible on the top-left corner
 
@@ -30,14 +30,14 @@ Feature: Auth Page UI Verification
   @loginui05
   Scenario: Email ID input field presence
     Given User is on the HerBalance launch page
-    When User clicked login button in home page
-    Then Email ID input field with placeholder "you@example.com" should be visible
+    When User clicks login button on home page
+    Then Email ID input field with placeholder "you@example.com" should be visible.
 
   @loginui06
   Scenario: Password input field presence
     Given User is on the HerBalance launch page
     When User clicks login button on home page
-    Then Password input field with masked entry should be visible
+    Then Password input field with masked entry should be visible.
 
   @loginui07
   Scenario: “Show Password”  presence
