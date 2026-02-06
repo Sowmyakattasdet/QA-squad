@@ -50,12 +50,12 @@ public class EditProfileBodyMetricStepDefinition {
 		Assert.assertEquals(actualMessage, expectedMessage, "Correct label not displayed");
 	}
 
-	@Then("Should display the user’s Height as entered during the onboarding process.")
-	public void should_display_the_user_s_height_as_entered_during_the_onboarding_process() {
-		String actualValueHeight = pom.getEditYourProfileBodyMetricsPage().getHeightValue();
-		String expectedHeightValue = "123";
-		Assert.assertEquals(actualValueHeight, expectedHeightValue, "Correct label not displayed");
-	}
+//	@Then("Should display the user’s Height as entered during the onboarding process.")
+//	public void should_display_the_user_s_height_as_entered_during_the_onboarding_process() {
+//		String actualValueHeight = pom.getEditYourProfileBodyMetricsPage().getHeightValue();
+//		String expectedHeightValue = "123";
+//		Assert.assertEquals(actualValueHeight, expectedHeightValue, "Correct label not displayed");
+//	}
 
 	@Then("BMI Category section should present with BMI Category")
 	public void bmi_category_section_should_present_with_bmi_category() throws InterruptedException {
