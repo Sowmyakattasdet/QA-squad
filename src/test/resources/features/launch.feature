@@ -1,4 +1,4 @@
-@Launch @Regression
+@Launch @Run
 Feature: Launch Page Functionality
 
   # Launch Page in Her Balance - Non functional
@@ -50,7 +50,7 @@ Feature: Launch Page Functionality
   # Launch Page in Her Balance -   functional
   Scenario: Login button is clickable
     Given User is in her balance home page
-    When User clicks log in button
+    When User clicks log in button.
     Then User should be navigated to auth page login tab
 
   Scenario: Sign up button is clickable
